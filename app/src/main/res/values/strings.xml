@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TestYourSelf</string>
+    <string name="empty"/>
 </resources>
