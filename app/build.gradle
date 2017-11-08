@@ -1,0 +1,49 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "26.0.2"
+    defaultConfig {
+        applicationId "ua.edu.nulp.testyourself"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    annotationProcessor "android.arch.lifecycle:compiler:" + rootProject.archLifecycleVersion;
+    annotationProcessor "android.arch.persistence.room:compiler:" + rootProject.archRoomVersion;
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.11'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
+
+    compile 'android.arch.lifecycle:extensions:' + rootProject.archLifecycleVersion;
+    compile 'android.arch.persistence.room:runtime:' + rootProject.archRoomVersion;
+    compile 'com.android.support:appcompat-v7:' + rootProject.supportLibVersion;
+    compile 'com.android.support:cardview-v7:' + rootProject.supportLibVersion;
+    compile 'com.android.support:recyclerview-v7:' + rootProject.supportLibVersion;
+    compile 'com.android.support:design:25.3.1'
+
+    compile 'com.google.dagger:dagger:2.11'
+    compile 'com.greysonparrelli.permiso:permiso:0.3.0'
+    compile 'com.jakewharton:butterknife:8.7.0'
+    compile 'com.sdsmdg.tastytoast:tastytoast:0.1.1'
+    compile 'io.reactivex:rxjava-async-util:0.21.0'
+    compile 'io.reactivex:rxandroid:1.1.0'
+    compile 'jp.wasabeef:blurry:2.1.1'
+
+    testCompile 'junit:junit:4.12'
+}
