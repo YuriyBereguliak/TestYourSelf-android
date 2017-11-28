@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,45 +18,17 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/linearlayout_fragment_home_show_all_results"
+                <ImageView
+                    android:id="@+id/imageview_fragment_home_results"
                     style="@style/homeFragmentMenuContainer"
-                    android:orientation="vertical"
-                    tools:ignore="UseCompoundDrawables">
+                    android:contentDescription="@string/empty"
+                    android:src="@drawable/ic_list_round" />
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:contentDescription="@string/empty"
-                        android:src="@drawable/ic_list"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="All results"
-                        android:textAlignment="center"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/linearlayout_fragment_home_show_settings"
+                <ImageView
+                    android:id="@+id/imageview_fragment_home_settings"
                     style="@style/homeFragmentMenuContainer"
-                    android:orientation="vertical"
-                    tools:ignore="UseCompoundDrawables">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:contentDescription="@string/empty"
-                        android:src="@drawable/ic_settings"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Settings"
-                        android:textAlignment="center"/>
-                </LinearLayout>
+                    android:contentDescription="@string/empty"
+                    android:src="@drawable/ic_settings_round" />
             </LinearLayout>
         </LinearLayout>
 
@@ -66,6 +37,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="horizontal"
-            android:text="Start new test"/>
+            android:text="Start new test" />
     </LinearLayout>
 </layout>
