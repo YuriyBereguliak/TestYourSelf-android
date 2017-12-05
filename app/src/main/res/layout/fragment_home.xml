@@ -23,6 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_above="@+id/linearlayout_fragment_home_action_button_container"
+                android:background="?attr/selectableItemBackground"
                 android:padding="@dimen/margin_all_big">
 
                 <ImageView
