@@ -27,5 +27,8 @@
             android:name=".ui.activities.results.AllResultsActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".ui.activities.settings.SettingsActivity"
+            android:screenOrientation="portrait" />
     </application>
 </manifest>
