@@ -29,6 +29,8 @@ public class AllResultsActivity extends BaseActivity implements AllResultsActivi
     @Override
     protected void bindView() {
         ButterKnife.bind(this);
+
+        showAllResultsFragment();
     }
 
     @Override
