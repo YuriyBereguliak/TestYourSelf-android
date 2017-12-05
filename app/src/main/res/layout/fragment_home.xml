@@ -1,41 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="1">
+        android:layout_height="match_parent">
 
-
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/imageview_fragment_home_start_test"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:text="Start new test" />
-
-        <LinearLayout
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:contentDescription="@string/empty"
+            android:scaleType="centerCrop"
+            android:src="@drawable/background_gradient"/>
 
-            <ImageView
-                android:id="@+id/imageview_fragment_home_results"
-                style="@style/homeFragmentMenuContainer"
-                android:contentDescription="@string/empty"
-                android:src="@drawable/ic_list_round" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="1">
 
-            <ImageView
-                android:id="@+id/imageview_fragment_home_settings"
-                style="@style/homeFragmentMenuContainer"
-                android:contentDescription="@string/empty"
-                android:src="@drawable/ic_settings_round" />
-        </LinearLayout>
-    </RelativeLayout>
+            <FrameLayout
+                android:id="@+id/framelayout_fragment_home_start_test"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/linearlayout_fragment_home_action_button_container"
+                android:padding="@dimen/margin_all_big">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/empty"
+                    android:src="@drawable/item_round"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/text_fragment_home_start_text"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/textsize_all_headline"
+                    android:textStyle="bold"/>
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/linearlayout_fragment_home_action_button_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageview_fragment_home_results"
+                    style="@style/homeFragmentMenuContainer"
+                    android:contentDescription="@string/empty"
+                    android:src="@drawable/ic_list_round"/>
+
+                <ImageView
+                    android:id="@+id/imageview_fragment_home_settings"
+                    style="@style/homeFragmentMenuContainer"
+                    android:contentDescription="@string/empty"
+                    android:src="@drawable/ic_settings_round"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </FrameLayout>
 </layout>

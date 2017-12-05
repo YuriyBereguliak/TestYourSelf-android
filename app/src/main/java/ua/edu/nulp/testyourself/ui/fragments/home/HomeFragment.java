@@ -65,7 +65,7 @@ public class HomeFragment extends BaseFragment {
         mHomeActivityNavigation.showSettingsActivity();
     }
 
-    @OnClick(R.id.imageview_fragment_home_start_test)
+    @OnClick(R.id.framelayout_fragment_home_start_test)
     void onStartTestClickListener() {
         mHomeActivityNavigation.showTestActivity();
     }
