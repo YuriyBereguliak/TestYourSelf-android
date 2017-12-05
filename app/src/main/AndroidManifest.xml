@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="ua.edu.nulp.testyourself">
+    package="ua.edu.nulp.testyourself">
 
     <application
         android:name=".App"
@@ -13,13 +13,19 @@
 
         <activity android:name=".ui.activities.splash.SplashActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.activities.home.HomeActivity"/>
+        <activity
+            android:name=".ui.activities.home.HomeActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activities.results.AllResultsActivity"
+            android:screenOrientation="portrait" />
 
     </application>
 </manifest>
