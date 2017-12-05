@@ -14,7 +14,7 @@ import ua.edu.nulp.testyourself.ui.activities.home.HomeActivity;
 
 public class SplashActivity extends BaseActivity {
 
-    private static final long DELAY_SEND_NESSAGE_LOADING_MILLIS = 1000L;
+    private static final long DELAY_SEND_MESSAGE_LOADING_MILLIS = 1000L;
     private static final int MSG_GET_ACTIVE_USER = 0x1003;                  //4099 in dec
 
     //region BaseActivity
@@ -51,8 +51,7 @@ public class SplashActivity extends BaseActivity {
     //region Utility API
     private void sendLoadingMessage() {
         mUIHandler.removeMessages(MSG_GET_ACTIVE_USER);
-        Message message = Message.obtain(mUIHandler, MSG_GET_ACTIVE_USER);
-        mUIHandler.sendMessageDelayed(message, DELAY_SEND_NESSAGE_LOADING_MILLIS);
+        mUIHandler.sendMessageDelayed(Message.obtain(mUIHandler, MSG_GET_ACTIVE_USER), DELAY_SEND_MESSAGE_LOADING_MILLIS);
     }
 
     private void startMainActivity() {
