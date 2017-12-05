@@ -1,4 +1,4 @@
-package ua.edu.nulp.testyourself.ui.fragments.results;
+package ua.edu.nulp.testyourself.ui.fragments.test;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -6,28 +6,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import javax.inject.Inject;
-
+import butterknife.ButterKnife;
 import ua.edu.nulp.testyourself.R;
 import ua.edu.nulp.testyourself.core.BaseActivity;
 import ua.edu.nulp.testyourself.core.BaseFragment;
-import ua.edu.nulp.testyourself.databinding.FragmentAllResultsBinding;
+import ua.edu.nulp.testyourself.databinding.FragmentUserNameBinding;
 import ua.edu.nulp.testyourself.di.activity.ActivityComponent;
-import ua.edu.nulp.testyourself.ui.activities.results.AllResultsActivityNavigation;
 
 /**
  * TestYourSelf-android
  * Created by Yuriy Bereguliak on 12/5/17.
  */
 
-public class AllResultsFragment extends BaseFragment {
+public class UserNameFragment extends BaseFragment {
 
-    @Inject
-    AllResultsActivityNavigation mAllResultsActivityNavigation;
+    private FragmentUserNameBinding mBinding;
 
-    public static AllResultsFragment newInstance() {
+    public static UserNameFragment newInstance() {
         Bundle args = new Bundle();
-        AllResultsFragment fragment = new AllResultsFragment();
+        UserNameFragment fragment = new UserNameFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -40,12 +37,13 @@ public class AllResultsFragment extends BaseFragment {
 
     @Override
     protected View bindView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        FragmentAllResultsBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_all_results, container, false);
-        return binding.getRoot();
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_user_name, container, false);
+        return mBinding.getRoot();
     }
 
     @Override
     protected void bindViewModel() {
+        ButterKnife.bind(this, mBinding.getRoot());
     }
     //endregion
 }

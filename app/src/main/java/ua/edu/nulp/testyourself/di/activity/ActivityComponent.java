@@ -8,8 +8,10 @@ import ua.edu.nulp.testyourself.di.application.AppComponent;
 import ua.edu.nulp.testyourself.ui.activities.home.HomeActivity;
 import ua.edu.nulp.testyourself.ui.activities.results.AllResultsActivity;
 import ua.edu.nulp.testyourself.ui.activities.splash.SplashActivity;
+import ua.edu.nulp.testyourself.ui.activities.test.TestActivity;
 import ua.edu.nulp.testyourself.ui.fragments.home.HomeFragment;
 import ua.edu.nulp.testyourself.ui.fragments.results.AllResultsFragment;
+import ua.edu.nulp.testyourself.ui.fragments.test.UserNameFragment;
 
 /**
  * TestYourSelf project
@@ -29,6 +31,10 @@ public interface ActivityComponent {
     void inject(AllResultsActivity allResultsActivity);
 
     void inject(AllResultsFragment allResultsFragment);
+
+    void inject(TestActivity testActivity);
+
+    void inject(UserNameFragment userNameFragment);
 
     //region Builder
     final class Initializer {
