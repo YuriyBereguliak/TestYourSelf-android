@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.daimajia.swipe.SwipeLayout;
 import com.sdsmdg.tastytoast.TastyToast;
 
 import java.util.List;
@@ -36,6 +37,9 @@ import ua.edu.nulp.testyourself.utils.L;
  */
 
 public class UserNameFragment extends BaseFragment {
+
+    @BindView(R.id.swipelayout_fargment_user_name)
+    SwipeLayout mSwipeLayout;
 
     @BindView(R.id.textinputedittext_fragment_user_name)
     TextInputEditText mUserNameTextInputEditText;
