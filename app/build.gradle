@@ -41,7 +41,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:' + rootProject.supportLibVersion;
     compile 'com.android.support:cardview-v7:' + rootProject.supportLibVersion;
     compile 'com.android.support:recyclerview-v7:' + rootProject.supportLibVersion;
-    compile 'com.android.support:design:25.4.0'
+    compile 'com.android.support:design:' + rootProject.supportLibVersion;
 
     compile 'com.google.dagger:dagger:2.12'
     compile 'com.greysonparrelli.permiso:permiso:0.3.0'
