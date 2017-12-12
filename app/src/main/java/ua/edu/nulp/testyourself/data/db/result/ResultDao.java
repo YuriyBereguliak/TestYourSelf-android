@@ -17,7 +17,7 @@ public interface ResultDao {
 
     LiveData<List<Result>> getAllResults();
 
-    LiveData<List<Result>> getResultsForUser(int userId);
+    LiveData<List<Result>> getResultsForUser(String userName);
 
     LiveData<List<BestResults>> getTopResults(int limit);
 

@@ -3,6 +3,7 @@ package ua.edu.nulp.testyourself.model;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
 /**
@@ -13,9 +14,12 @@ import android.arch.persistence.room.PrimaryKey;
 @Entity(tableName = "Results",
         foreignKeys = {
                 @ForeignKey(entity = User.class,
-                        parentColumns = "user_id",
-                        childColumns = "user_id",
+                        parentColumns = "user_name",
+                        childColumns = "user_name",
                         onDelete = ForeignKey.CASCADE)
+        },
+        indices = {
+                @Index(value = "user_name")
         })
 public class Result {
 
@@ -23,8 +27,8 @@ public class Result {
     @ColumnInfo(name = "result_id")
     private int mResultId;
 
-    @ColumnInfo(name = "user_id")
-    private int mUserId;
+    @ColumnInfo(name = "user_name")
+    private String mUserName;
 
     @ColumnInfo(name = "result")
     private String mGameResult;
@@ -38,12 +42,12 @@ public class Result {
         mResultId = resultId;
     }
 
-    public int getUserId() {
-        return mUserId;
+    public String getUserName() {
+        return mUserName;
     }
 
-    public void setUserId(int userId) {
-        mUserId = userId;
+    public void setUserName(String userName) {
+        mUserName = userName;
     }
 
     public String getGameResult() {
@@ -60,7 +64,7 @@ public class Result {
     public String toString() {
         return "Result{" +
                 "mResultId=" + mResultId +
-                ", mUserId=" + mUserId +
+                ", mUserId=" + mUserName +
                 ", mGameResult='" + mGameResult + '\'' +
                 '}';
     }

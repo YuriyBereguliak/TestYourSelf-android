@@ -15,7 +15,7 @@ public class BestResults {
     @Embedded
     private User mUser;
 
-    @Relation(parentColumn = "user_id", entityColumn = "user_id")
+    @Relation(parentColumn = "user_name", entityColumn = "user_name")
     private List<Result> mResults;
 
     public User getUser() {

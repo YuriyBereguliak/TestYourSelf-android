@@ -26,8 +26,8 @@ public interface ResultDaoImpl extends ResultDao {
 
     @Override
     @Nullable
-    @Query("SELECT * FROM Results WHERE user_id= :userId")
-    LiveData<List<Result>> getResultsForUser(int userId);
+    @Query("SELECT * FROM Results WHERE user_name= :userName")
+    LiveData<List<Result>> getResultsForUser(String userName);
 
     @Override
     @Nullable

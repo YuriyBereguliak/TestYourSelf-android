@@ -14,10 +14,7 @@ import java.util.Arrays;
 @Entity(tableName = "Users")
 public class User {
 
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "user_id")
-    private int mUserId;
-
+    @PrimaryKey
     @ColumnInfo(name = "user_name")
     private String mUserName;
 
@@ -29,14 +26,6 @@ public class User {
     }
 
     //region Getters and setters
-    public int getUserId() {
-        return mUserId;
-    }
-
-    public void setUserId(int userId) {
-        mUserId = userId;
-    }
-
     public String getUserName() {
         return mUserName;
     }
@@ -58,7 +47,6 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "mUserId=" + mUserId +
                 ", mUserName='" + mUserName + '\'' +
                 ", mUserAvatar=" + Arrays.toString(mUserAvatar) +
                 '}';

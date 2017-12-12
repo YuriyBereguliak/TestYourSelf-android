@@ -32,8 +32,8 @@ public class ResultRepository implements ResultDataSource {
     }
 
     @Override
-    public LiveData<List<Result>> getResultsForUser(int userId) {
-        return mResultDao.getResultsForUser(userId);
+    public LiveData<List<Result>> getResultsForUser(String userName) {
+        return mResultDao.getResultsForUser(userName);
     }
 
     @Override
