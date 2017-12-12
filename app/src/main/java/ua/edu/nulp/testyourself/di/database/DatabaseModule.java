@@ -12,11 +12,8 @@ import ua.edu.nulp.testyourself.data.datasource.ResultDataSource;
 import ua.edu.nulp.testyourself.data.datasource.TasksDataSource;
 import ua.edu.nulp.testyourself.data.datasource.UserDataSource;
 import ua.edu.nulp.testyourself.data.db.AppDatabase;
-import ua.edu.nulp.testyourself.data.db.result.ResultDao;
 import ua.edu.nulp.testyourself.data.db.result.ResultDaoImpl;
-import ua.edu.nulp.testyourself.data.db.tasks.TasksDao;
 import ua.edu.nulp.testyourself.data.db.tasks.TasksDaoImpl;
-import ua.edu.nulp.testyourself.data.db.user.UserDao;
 import ua.edu.nulp.testyourself.data.db.user.UserDaoImpl;
 import ua.edu.nulp.testyourself.data.repository.ResultRepository;
 import ua.edu.nulp.testyourself.data.repository.TasksRepository;
@@ -30,14 +27,14 @@ import ua.edu.nulp.testyourself.data.repository.UserRepository;
 @Module
 public class DatabaseModule {
 
-    private static final String MONEY_CACHE_DB = "TestYourSelf.db";
+    private static final String TEST_YOUR_SELF_DB = "TestYourSelf.db";
 
     private AppDatabase mAppDatabase;
 
     public DatabaseModule(App app) {
         mAppDatabase = Room.databaseBuilder(app.getApplicationContext(),
                 AppDatabase.class,
-                MONEY_CACHE_DB)
+                TEST_YOUR_SELF_DB)
                 .build();
     }
 
