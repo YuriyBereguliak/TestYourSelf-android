@@ -5,6 +5,7 @@ import android.arch.lifecycle.LiveData;
 import java.util.List;
 
 import ua.edu.nulp.testyourself.model.Task;
+import ua.edu.nulp.testyourself.model.TaskDetails;
 
 /**
  * TestYourSelf-android
@@ -12,5 +13,5 @@ import ua.edu.nulp.testyourself.model.Task;
  */
 
 public interface TasksDataSource {
-    LiveData<List<Task>> getAllTasks();
+    LiveData<List<TaskDetails>> getAllTasks();
 }

@@ -7,9 +7,10 @@ import javax.inject.Singleton;
 import dagger.Component;
 import ua.edu.nulp.testyourself.App;
 import ua.edu.nulp.testyourself.core.executor.ThreadExecutor;
+import ua.edu.nulp.testyourself.di.database.DatabaseModule;
 
 @Singleton
-@Component(modules = {AppModule.class})
+@Component(modules = {AppModule.class, DatabaseModule.class})
 public interface AppComponent {
 
     //region Initializer
@@ -21,6 +22,7 @@ public interface AppComponent {
         public static AppComponent init(App app) {
             return DaggerAppComponent.builder()
                     .appModule(new AppModule(app))
+                    .databaseModule(new DatabaseModule(app))
                     .build();
         }
     }

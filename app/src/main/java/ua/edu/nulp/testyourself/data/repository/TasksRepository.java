@@ -6,7 +6,7 @@ import java.util.List;
 
 import ua.edu.nulp.testyourself.data.datasource.TasksDataSource;
 import ua.edu.nulp.testyourself.data.db.tasks.TasksDao;
-import ua.edu.nulp.testyourself.model.Task;
+import ua.edu.nulp.testyourself.model.TaskDetails;
 
 /**
  * TestYourSelf-android
@@ -23,7 +23,7 @@ public class TasksRepository implements TasksDataSource {
 
     //region TasksDataSource
     @Override
-    public LiveData<List<Task>> getAllTasks() {
+    public LiveData<List<TaskDetails>> getAllTasks() {
         return mTasksDao.getAllTasks();
     }
     //endregion

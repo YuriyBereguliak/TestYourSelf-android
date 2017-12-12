@@ -46,7 +46,7 @@ public class Choice {
         return mIsChoiceTrue;
     }
 
-    public void setChoiceTrue(boolean choiceTrue) {
+    public void setIsChoiceTrue(boolean choiceTrue) {
         mIsChoiceTrue = choiceTrue;
     }
 

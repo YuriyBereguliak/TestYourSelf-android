@@ -1,6 +1,7 @@
 package ua.edu.nulp.testyourself.data.db.result;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Query;
 import android.support.annotation.Nullable;
@@ -15,6 +16,7 @@ import ua.edu.nulp.testyourself.model.Result;
  * Created by Yuriy Bereguliak on 12/12/17.
  */
 
+@Dao
 public interface ResultDaoImpl extends ResultDao {
 
     @Override
@@ -29,7 +31,7 @@ public interface ResultDaoImpl extends ResultDao {
 
     @Override
     @Nullable
-    @Query("SELECT * FROM Users ORDER BY result ASC LIMIT :limit ")
+    @Query("SELECT * FROM Users LIMIT :limit ")
     LiveData<List<BestResults>> getTopResults(int limit);
 
     @Override

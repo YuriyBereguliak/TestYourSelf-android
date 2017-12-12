@@ -1,5 +1,6 @@
 package ua.edu.nulp.testyourself.data.db.user;
 
+import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
@@ -16,6 +17,7 @@ import ua.edu.nulp.testyourself.model.User;
  * Created by Yuriy Bereguliak on 12/12/17.
  */
 
+@Dao
 public interface UserDaoImpl extends UserDao{
 
     @Override
