@@ -1,0 +1,17 @@
+package ua.edu.nulp.testyourself.data.db.tasks;
+
+import android.arch.lifecycle.LiveData;
+
+import java.util.List;
+
+import ua.edu.nulp.testyourself.model.Task;
+
+/**
+ * TestYourSelf-android
+ * Created by Yuriy Bereguliak on 12/12/17.
+ */
+
+public interface TasksDao {
+
+    LiveData<List<Task>> getAllTasks();
+}
