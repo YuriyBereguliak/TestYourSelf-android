@@ -24,8 +24,9 @@ public class User {
     @ColumnInfo(name = "user_avatar")
     private byte[] mUserAvatar;
 
-    @ColumnInfo(name = "user_best_result")
-    private String mBestResult;
+    public User(String userName) {
+        mUserName = userName;
+    }
 
     //region Getters and setters
     public int getUserId() {
@@ -51,14 +52,6 @@ public class User {
     public void setUserAvatar(byte[] userAvatar) {
         mUserAvatar = userAvatar;
     }
-
-    public String getBestResult() {
-        return mBestResult;
-    }
-
-    public void setBestResult(String bestResult) {
-        mBestResult = bestResult;
-    }
     //endregion
 
     //region Object
@@ -68,7 +61,6 @@ public class User {
                 "mUserId=" + mUserId +
                 ", mUserName='" + mUserName + '\'' +
                 ", mUserAvatar=" + Arrays.toString(mUserAvatar) +
-                ", mBestResult='" + mBestResult + '\'' +
                 '}';
     }
     //endregion

@@ -26,7 +26,7 @@ public interface UserDaoImpl extends UserDao{
     List<User> getAllUsers();
 
     @Override
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.FAIL)
     void createUser(User user);
 
     @Override

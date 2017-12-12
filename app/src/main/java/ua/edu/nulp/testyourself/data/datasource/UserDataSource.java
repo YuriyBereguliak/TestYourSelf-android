@@ -15,7 +15,7 @@ public interface UserDataSource {
 
     LiveData<List<User>> getAllUsers();
 
-    void createUser(User user);
+    LiveData<Boolean> createUser(User user);
 
     void deleteUser(User user);
 }

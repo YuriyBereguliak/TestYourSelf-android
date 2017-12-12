@@ -2,6 +2,7 @@ package ua.edu.nulp.testyourself.ui.activities.test;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 
 import ua.edu.nulp.testyourself.R;
 import ua.edu.nulp.testyourself.core.BaseActivity;
@@ -15,6 +16,7 @@ import ua.edu.nulp.testyourself.ui.fragments.test.UserNameFragment;
 
 public class TestActivity extends BaseActivity implements TestActivityNavigation {
 
+    @NonNull
     public static Intent getStartIntent(Context context) {
         return new Intent(context, TestActivity.class);
     }
@@ -40,6 +42,11 @@ public class TestActivity extends BaseActivity implements TestActivityNavigation
     @Override
     public void showUserNameFragment() {
         replaceFragment(R.id.framelayout_activity_test, UserNameFragment.newInstance(), false);
+    }
+
+    @Override
+    public void showTestFragment() {
+
     }
     //endregion
 }

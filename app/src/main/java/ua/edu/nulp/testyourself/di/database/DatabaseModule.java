@@ -61,19 +61,19 @@ public class DatabaseModule {
 
     @Provides
     @Singleton
-    UserDataSource provideUserDataSource(ThreadExecutor threadExecutor, UserDao userDao) {
+    UserDataSource provideUserDataSource(ThreadExecutor threadExecutor, UserDaoImpl userDao) {
         return new UserRepository(threadExecutor, userDao);
     }
 
     @Provides
     @Singleton
-    TasksDataSource provideTasksRepository(TasksDao tasksDao) {
+    TasksDataSource provideTasksRepository(TasksDaoImpl tasksDao) {
         return new TasksRepository(tasksDao);
     }
 
     @Provides
     @Singleton
-    ResultDataSource provideResultDataSource(ThreadExecutor threadExecutor, ResultDao resultDao) {
+    ResultDataSource provideResultDataSource(ThreadExecutor threadExecutor, ResultDaoImpl resultDao) {
         return new ResultRepository(threadExecutor, resultDao);
     }
 }

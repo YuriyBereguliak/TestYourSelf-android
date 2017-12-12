@@ -2,6 +2,7 @@ package ua.edu.nulp.testyourself.data.repository;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
+import android.database.sqlite.SQLiteConstraintException;
 
 import java.util.List;
 
@@ -39,13 +40,20 @@ public class UserRepository implements UserDataSource {
     }
 
     @Override
-    public void createUser(final User user) {
+    public LiveData<Boolean> createUser(final User user) {
+        final MutableLiveData<Boolean> result = new MutableLiveData<>();
         mThreadExecutor.execute(new Runnable() {
             @Override
             public void run() {
-                mUserDao.createUser(user);
+                try {
+                    mUserDao.createUser(user);
+                    result.postValue(true);
+                } catch (SQLiteConstraintException e) {
+                    result.postValue(false);
+                }
             }
         });
+        return result;
     }
 
     @Override
