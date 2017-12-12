@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.sdsmdg.tastytoast.TastyToast;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -85,9 +87,15 @@ public class UserNameFragment extends BaseFragment {
                     @Override
                     public void onChanged(@Nullable Boolean aBoolean) {
                         if (aBoolean == Boolean.TRUE) {
+                            TastyToast.makeText(getContext(), getString(R.string.text_fragment_user_name_account_created),
+                                    TastyToast.LENGTH_SHORT,
+                                    TastyToast.SUCCESS).show();
+
                             mTestActivityNavigation.showTestFragment();
                         } else {
-                            // show error
+                            TastyToast.makeText(getContext(), getString(R.string.text_fragment_user_name_user_already_exist),
+                                    TastyToast.LENGTH_SHORT,
+                                    TastyToast.ERROR).show();
                         }
                     }
                 });

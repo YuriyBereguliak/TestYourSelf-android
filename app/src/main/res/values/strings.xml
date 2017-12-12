@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">TestYourSelf</string>
-    <string name="empty"/>
+    <string name="empty" />
+
+    <!-- HomeFragment -->
     <string name="text_fragment_home_start_text">Start test</string>
+
+    <!-- UserNameFragment -->
+    <string name="text_fragment_user_name_account_created">Account created</string>
+    <string name="text_fragment_user_name_user_already_exist">This user already exist</string>
 </resources>
