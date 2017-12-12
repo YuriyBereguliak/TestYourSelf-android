@@ -8,4 +8,5 @@
     <!-- UserNameFragment -->
     <string name="text_fragment_user_name_account_created">Account created</string>
     <string name="text_fragment_user_name_user_already_exist">This user already exist</string>
+    <string name="text_fragment_user_name_register_user_and_start_game">Register user and start game</string>
 </resources>

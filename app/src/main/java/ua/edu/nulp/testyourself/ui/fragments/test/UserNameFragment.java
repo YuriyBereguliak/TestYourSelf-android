@@ -80,7 +80,12 @@ public class UserNameFragment extends BaseFragment {
     //endregion
 
     //region Click handlers
-    @OnClick(R.id.imageview_fragment_user_name_start_game)
+    @OnClick(R.id.circleimageview_fragment_user_name_avatar)
+    void chooseAvatarClickListener() {
+
+    }
+
+    @OnClick(R.id.textview_fragment_user_name_start_game_and_register)
     void startGameClickListener() {
         mUserNameViewModel.saveUser(mUserDataSource, new User(mUserNameTextInputEditText.getText().toString()))
                 .observe(this, new Observer<Boolean>() {
