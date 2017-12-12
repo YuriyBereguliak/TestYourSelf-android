@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import dagger.Component;
 import ua.edu.nulp.testyourself.core.BaseActivity;
 import ua.edu.nulp.testyourself.di.application.AppComponent;
+import ua.edu.nulp.testyourself.di.database.DatabaseModule;
 import ua.edu.nulp.testyourself.ui.activities.home.HomeActivity;
 import ua.edu.nulp.testyourself.ui.activities.results.AllResultsActivity;
 import ua.edu.nulp.testyourself.ui.activities.splash.SplashActivity;

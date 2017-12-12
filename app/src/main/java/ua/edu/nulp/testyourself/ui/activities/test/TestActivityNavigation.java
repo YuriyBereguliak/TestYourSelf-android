@@ -8,4 +8,6 @@ package ua.edu.nulp.testyourself.ui.activities.test;
 public interface TestActivityNavigation {
 
     void showUserNameFragment();
+
+    void showTestFragment();
 }
