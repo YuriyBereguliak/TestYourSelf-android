@@ -27,9 +27,6 @@ public class User {
     @ColumnInfo(name = "user_best_result")
     private String mBestResult;
 
-    @ColumnInfo(name = "user_date_last_game")
-    private long mLastGameDate;
-
     //region Getters and setters
     public int getUserId() {
         return mUserId;
@@ -62,14 +59,6 @@ public class User {
     public void setBestResult(String bestResult) {
         mBestResult = bestResult;
     }
-
-    public long getLastGameDate() {
-        return mLastGameDate;
-    }
-
-    public void setLastGameDate(long lastGameDate) {
-        mLastGameDate = lastGameDate;
-    }
     //endregion
 
     //region Object
@@ -80,7 +69,6 @@ public class User {
                 ", mUserName='" + mUserName + '\'' +
                 ", mUserAvatar=" + Arrays.toString(mUserAvatar) +
                 ", mBestResult='" + mBestResult + '\'' +
-                ", mLastGameDate=" + mLastGameDate +
                 '}';
     }
     //endregion
