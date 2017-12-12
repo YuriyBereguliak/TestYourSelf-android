@@ -28,6 +28,7 @@ import ua.edu.nulp.testyourself.databinding.FragmentUserNameBinding;
 import ua.edu.nulp.testyourself.di.activity.ActivityComponent;
 import ua.edu.nulp.testyourself.model.User;
 import ua.edu.nulp.testyourself.ui.activities.test.TestActivityNavigation;
+import ua.edu.nulp.testyourself.ui.adapters.UsersAdapter;
 import ua.edu.nulp.testyourself.ui.viewmodels.UserNameViewModel;
 import ua.edu.nulp.testyourself.utils.L;
 
@@ -36,7 +37,7 @@ import ua.edu.nulp.testyourself.utils.L;
  * Created by Yuriy Bereguliak on 12/5/17.
  */
 
-public class UserNameFragment extends BaseFragment {
+public class UserNameFragment extends BaseFragment implements UsersAdapter.OnUserClickListener {
 
     @BindView(R.id.swipelayout_fargment_user_name)
     SwipeLayout mSwipeLayout;
@@ -50,6 +51,7 @@ public class UserNameFragment extends BaseFragment {
     @Inject
     TestActivityNavigation mTestActivityNavigation;
 
+    private UsersAdapter mAdapter;
     private UserNameViewModel mUserNameViewModel;
     private FragmentUserNameBinding mBinding;
 
@@ -79,7 +81,15 @@ public class UserNameFragment extends BaseFragment {
         mUserNameViewModel = ViewModelProviders.of(this).get(UserNameViewModel.class);
         mUserNameViewModel.setLifecycleOwner(this);
 
+        bindAdapter();
         loadAllData();
+    }
+    //endregion
+
+    //region OnUserClickListener
+    @Override
+    public void onUserClickListener(User user) {
+
     }
     //endregion
 
@@ -120,10 +130,16 @@ public class UserNameFragment extends BaseFragment {
                     L.e("Result == null");
                     return;
                 }
-
-                L.d(users.toString());
+                mAdapter.setUsers(users);
             }
         });
+    }
+
+    private void bindAdapter() {
+        if (mAdapter == null) {
+            mAdapter = new UsersAdapter(this);
+        }
+        mBinding.recyclerviewFragmentUserName.setAdapter(mAdapter);
     }
     //endregion
 }
