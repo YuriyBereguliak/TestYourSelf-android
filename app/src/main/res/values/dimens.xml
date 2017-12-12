@@ -22,5 +22,6 @@
     <dimen name="textsize_all_display_2">45dp</dimen>
     <dimen name="textsize_all_display_3">56dp</dimen>
     <dimen name="textsize_all_display_4">112dp</dimen>
+    <dimen name="size_app_logo">110dp</dimen>
 
 </resources>
