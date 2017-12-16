@@ -1,10 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+        xmlns:recycler="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:layout_width="match_parent"
-                  android:layout_height="match_parent"
-                  android:orientation="vertical">
+    <data>
 
-    </LinearLayout>
+        <variable
+            name="user"
+            type="ua.edu.nulp.testyourself.model.User"/>
+
+        <variable
+            name="isShowRecyclerView"
+            type="Boolean"/>
+
+        <variable
+            name="onCancelTestClick"
+            type="ua.edu.nulp.testyourself.ui.fragments.test.OnCancelTestClickListener"/>
+
+        <variable
+            name="viewModel"
+            type="ua.edu.nulp.testyourself.ui.viewmodels.TestViewModel"/>
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/empty"
+            android:src="@drawable/background_gradient"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_all_default"
+                android:background="?attr/selectableItemBackground"
+                android:contentDescription="@string/empty"
+                android:onClick="@{() -> onCancelTestClick.onCancelTest()}"
+                android:src="@android:drawable/ic_notification_clear_all"
+                android:tint="@android:color/white"/>
+
+            <LinearLayout
+                android:id="@+id/linearlayout_fragment_test_user_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/margin_all_default"
+                tools:ignore="UseCompoundDrawables">
+
+                <ImageView
+                    android:id="@+id/imageview_item_user_avatar"
+                    android:layout_width="@dimen/size_user_avatar_image_view"
+                    android:layout_height="@dimen/size_user_avatar_image_view"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/empty"
+                    android:src="@drawable/ic_user"
+                    bind:image="@{user.userAvatar}"/>
+
+                <TextView
+                    android:id="@+id/textview_item_user_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@{user.userName}"
+                    android:textAppearance="?attr/textAppearanceListItem"
+                    android:textColor="@android:color/white"/>
+            </LinearLayout>
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/linearlayout_fragment_test_user_container">
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    bind:visible="@{isShowRecyclerView}"
+                    recycler:layoutManager="LinearLayoutManager"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    bind:visible="@{!isShowRecyclerView}">
+
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:indeterminate="true"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_fragment_test_loading_tests"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/textsize_all_subheading"/>
+                </LinearLayout>
+            </FrameLayout>
+        </RelativeLayout>
+
+    </FrameLayout>
 </layout>

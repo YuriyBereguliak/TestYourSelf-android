@@ -45,6 +45,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
     @Override
     public void onBindViewHolder(UserViewHolder holder, int position) {
         holder.mBinding.setUser(mUsers.get(position));
+        holder.mBinding.setIsDividerVisible(true);
         holder.mBinding.executePendingBindings();
     }
 

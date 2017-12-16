@@ -11,6 +11,11 @@
             type="ua.edu.nulp.testyourself.model.User"/>
 
         <variable
+            name="isDividerVisible"
+            type="Boolean"
+            android:value="true"/>
+
+        <variable
             name="onClickListener"
             type="ua.edu.nulp.testyourself.ui.adapters.UsersAdapter.OnUserClickListener"/>
     </data>
@@ -46,7 +51,8 @@
                 android:layout_marginLeft="@dimen/margin_all_default"
                 android:layout_marginStart="@dimen/margin_all_default"
                 android:text="@{user.userName}"
-                android:textAppearance="?attr/textAppearanceListItem"/>
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:textColor="@android:color/white"/>
         </LinearLayout>
 
         <View
@@ -55,6 +61,7 @@
             android:layout_height="@dimen/height_divider"
             android:layout_marginLeft="@dimen/margin_all_default"
             android:layout_marginStart="@dimen/margin_all_default"
-            android:background="@color/colorDivider"/>
+            android:background="@color/colorDivider"
+            bind:visible="@{isDividerVisible}"/>
     </LinearLayout>
 </layout>

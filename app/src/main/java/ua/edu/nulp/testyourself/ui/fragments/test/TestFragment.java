@@ -21,7 +21,7 @@ import ua.edu.nulp.testyourself.ui.viewmodels.TestViewModel;
  * Created by Yuriy Bereguliak on 16.12.2017.
  */
 
-public class TestFragment extends BaseFragment {
+public class TestFragment extends BaseFragment implements OnCancelTestClickListener {
 
     private static final String ARGUMENT_USER = "ua.edu.nulp.testyourself.ui.fragments.test.USER";
 
@@ -51,15 +51,30 @@ public class TestFragment extends BaseFragment {
     @Override
     protected void bindViewModel() {
         ButterKnife.bind(this, mBinding.getRoot());
-
         initViewModel();
+        initBindingView();
+    }
+    //endregion
+
+    //region OnCancelTestClickListener
+    @Override
+    public void onCancelTest() {
+
     }
     //endregion
 
     //region Utility API
+    private void initBindingView() {
+        mBinding.setUser((User) getArguments().getParcelable(ARGUMENT_USER));
+        mBinding.setOnCancelTestClick(this);
+    }
+
     private void initViewModel() {
         mTestViewModel = ViewModelProviders.of(this).get(TestViewModel.class);
         mTestViewModel.setLifecycleOwner(this);
+
+        mBinding.setViewModel(mTestViewModel);
     }
     //endregion
+
 }
