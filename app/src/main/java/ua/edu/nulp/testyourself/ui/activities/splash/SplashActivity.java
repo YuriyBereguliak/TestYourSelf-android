@@ -2,8 +2,11 @@ package ua.edu.nulp.testyourself.ui.activities.splash;
 
 import android.os.Message;
 
+import javax.inject.Inject;
+
 import ua.edu.nulp.testyourself.R;
 import ua.edu.nulp.testyourself.core.BaseActivity;
+import ua.edu.nulp.testyourself.data.datasource.TasksDataSource;
 import ua.edu.nulp.testyourself.di.activity.ActivityComponent;
 import ua.edu.nulp.testyourself.ui.activities.home.HomeActivity;
 
@@ -16,6 +19,9 @@ public class SplashActivity extends BaseActivity {
 
     private static final long DELAY_SEND_MESSAGE_LOADING_MILLIS = 1000L;
     private static final int MSG_GET_ACTIVE_USER = 0x1003;                  //4099 in dec
+
+    @Inject
+    TasksDataSource mTasksDataSource;
 
     //region BaseActivity
     @Override

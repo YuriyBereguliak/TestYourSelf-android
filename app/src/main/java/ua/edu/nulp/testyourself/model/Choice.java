@@ -12,10 +12,7 @@ import android.arch.persistence.room.PrimaryKey;
 @Entity(tableName = "Choices")
 public class Choice {
 
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "choice_id")
-    private int mChoiceId;
-
+    @PrimaryKey()
     @ColumnInfo(name = "choice_text")
     private String mChoiceText;
 
@@ -23,16 +20,9 @@ public class Choice {
     private boolean mIsChoiceTrue;
 
     @ColumnInfo(name = "task_id")
-    private int mTaskId;
+    private String mTaskId;
 
     //region Getters and Setters
-    public int getChoiceId() {
-        return mChoiceId;
-    }
-
-    public void setChoiceId(int choiceId) {
-        mChoiceId = choiceId;
-    }
 
     public String getChoiceText() {
         return mChoiceText;
@@ -50,20 +40,20 @@ public class Choice {
         mIsChoiceTrue = choiceTrue;
     }
 
-    public int getTaskId() {
+    public String getTaskId() {
         return mTaskId;
     }
 
-    public void setTaskId(int taskId) {
+    public void setTaskId(String taskId) {
         mTaskId = taskId;
     }
-    //endregion
+
+//endregion
 
     //region Object
     @Override
     public String toString() {
         return "Choice{" +
-                "mChoiceId=" + mChoiceId +
                 ", mChoiceText='" + mChoiceText + '\'' +
                 ", mIsChoiceTrue=" + mIsChoiceTrue +
                 ", mTaskId=" + mTaskId +

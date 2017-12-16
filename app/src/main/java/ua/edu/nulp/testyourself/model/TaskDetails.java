@@ -15,6 +15,16 @@ public class TaskDetails {
     @Embedded
     public Task mTask;
 
-    @Relation(parentColumn = "task_id", entityColumn = "task_id", entity = Choice.class)
+    @Relation(parentColumn = "task_text", entityColumn = "task_id", entity = Choice.class)
     public List<Choice> mChoices;
+
+    //region Object
+    @Override
+    public String toString() {
+        return "TaskDetails{" +
+                "mTask=" + mTask +
+                ", mChoices=" + mChoices + "\n" +
+                '}';
+    }
+    //endregion
 }

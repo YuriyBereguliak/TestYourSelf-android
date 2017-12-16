@@ -64,8 +64,8 @@ public class DatabaseModule {
 
     @Provides
     @Singleton
-    TasksDataSource provideTasksRepository(TasksDaoImpl tasksDao) {
-        return new TasksRepository(tasksDao);
+    TasksDataSource provideTasksRepository(ThreadExecutor threadExecutor, TasksDaoImpl tasksDao) {
+        return new TasksRepository(threadExecutor, tasksDao);
     }
 
     @Provides

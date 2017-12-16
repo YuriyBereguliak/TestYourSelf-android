@@ -12,22 +12,11 @@ import android.arch.persistence.room.PrimaryKey;
 @Entity(tableName = "Tasks")
 public class Task {
 
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "task_id")
-    private int mTaskId;
-
+    @PrimaryKey()
     @ColumnInfo(name = "task_text")
     private String mTaskName;
 
     //region Getters and Setters
-    public int getTaskId() {
-        return mTaskId;
-    }
-
-    public void setTaskId(int taskId) {
-        mTaskId = taskId;
-    }
-
     public String getTaskName() {
         return mTaskName;
     }
@@ -41,8 +30,7 @@ public class Task {
     @Override
     public String toString() {
         return "Task{" +
-                "mTaskId=" + mTaskId +
-                ", mTaskName='" + mTaskName + '\'' +
+                "mTaskName='" + mTaskName + '\'' +
                 '}';
     }
     //endregion

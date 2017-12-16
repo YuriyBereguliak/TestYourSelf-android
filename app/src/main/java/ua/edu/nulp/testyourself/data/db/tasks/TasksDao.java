@@ -1,10 +1,10 @@
 package ua.edu.nulp.testyourself.data.db.tasks;
 
 import android.arch.lifecycle.LiveData;
-import android.arch.persistence.room.Dao;
 
 import java.util.List;
 
+import ua.edu.nulp.testyourself.model.Choice;
 import ua.edu.nulp.testyourself.model.Task;
 import ua.edu.nulp.testyourself.model.TaskDetails;
 
@@ -16,4 +16,12 @@ import ua.edu.nulp.testyourself.model.TaskDetails;
 public interface TasksDao {
 
     LiveData<List<TaskDetails>> getAllTasks();
+
+    void insert(Task task);
+
+    void insertAllTasks(List<Task> tasks);
+
+    void insert(Choice choice);
+
+    void insertAllChoices(List<Choice> choices);
 }
