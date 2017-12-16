@@ -71,17 +71,14 @@ public class UserNameFragment extends BaseFragment implements UsersAdapter.OnUse
     @Override
     protected View bindView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_user_name, container, false);
+        bindAdapter();
         return mBinding.getRoot();
     }
 
     @Override
     protected void bindViewModel() {
         ButterKnife.bind(this, mBinding.getRoot());
-
-        mUserNameViewModel = ViewModelProviders.of(this).get(UserNameViewModel.class);
-        mUserNameViewModel.setLifecycleOwner(this);
-
-        bindAdapter();
+        initViewModel();
         loadAllData();
     }
     //endregion
@@ -146,6 +143,13 @@ public class UserNameFragment extends BaseFragment implements UsersAdapter.OnUse
             mAdapter = new UsersAdapter(this);
         }
         mBinding.recyclerviewFragmentUserName.setAdapter(mAdapter);
+    }
+
+    private void initViewModel() {
+        mUserNameViewModel = ViewModelProviders.of(this).get(UserNameViewModel.class);
+        mUserNameViewModel.setLifecycleOwner(this);
+
+        mBinding.setUserNameViewModel(mUserNameViewModel);
     }
     //endregion
 }

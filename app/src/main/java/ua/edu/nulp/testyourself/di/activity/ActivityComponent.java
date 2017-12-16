@@ -12,6 +12,7 @@ import ua.edu.nulp.testyourself.ui.activities.splash.SplashActivity;
 import ua.edu.nulp.testyourself.ui.activities.test.TestActivity;
 import ua.edu.nulp.testyourself.ui.fragments.home.HomeFragment;
 import ua.edu.nulp.testyourself.ui.fragments.results.AllResultsFragment;
+import ua.edu.nulp.testyourself.ui.fragments.test.TestFragment;
 import ua.edu.nulp.testyourself.ui.fragments.test.UserNameFragment;
 
 /**
@@ -36,6 +37,8 @@ public interface ActivityComponent {
     void inject(TestActivity testActivity);
 
     void inject(UserNameFragment userNameFragment);
+
+    void inject(TestFragment testFragment);
 
     //region Builder
     final class Initializer {

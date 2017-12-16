@@ -13,6 +13,9 @@ public class ImageBindingAdapter {
 
     @BindingAdapter({"bind:image"})
     public static void loadImage(ImageView imageView, byte[] bytes) {
+        if (bytes == null) {
+            return;
+        }
         imageView.setImageBitmap(BitmapFactory.decodeByteArray(bytes, 0, 0));
     }
 }
