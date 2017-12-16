@@ -15,6 +15,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.sdsmdg.tastytoast.TastyToast;
+
 import ua.edu.nulp.testyourself.App;
 import ua.edu.nulp.testyourself.R;
 import ua.edu.nulp.testyourself.utils.L;
@@ -146,6 +148,13 @@ public abstract class BaseFragment extends LifecycleFragment implements Handler.
         Message message = new Message();
         message.what = MSG_HIDE_LOADING_DIALOG;
         mUIHandler.sendMessage(message);
+    }
+
+    public void showTastyToast(String message, int type) {
+        TastyToast.makeText(getContext(),
+                message,
+                TastyToast.LENGTH_SHORT,
+                type).show();
     }
 
     //region ErrorUiHandler

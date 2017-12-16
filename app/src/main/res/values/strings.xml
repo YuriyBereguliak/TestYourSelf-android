@@ -9,6 +9,8 @@
     <string name="text_fragment_user_name_account_created">Account created</string>
     <string name="text_fragment_user_name_user_already_exist">This user already exist</string>
     <string name="text_fragment_user_name_register_user_and_start_game">Register user and start game</string>
+    <string name="text_fragment_user_name_empty_toast">Please fill user name</string>
+    <string name="text_fragment_user_name_empty_text_input_layout">Can not be empty</string>
 
     <!-- TestFragment -->
     <string name="text_fragment_test_loading_tests">Loading tests</string>

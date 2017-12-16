@@ -6,6 +6,8 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +43,9 @@ public class UserNameFragment extends BaseFragment implements UsersAdapter.OnUse
 
     @BindView(R.id.swipelayout_fragment_user_name)
     SwipeLayout mSwipeLayout;
+
+    @BindView(R.id.textinputlayout_fragment_user_name)
+    TextInputLayout mUserNameTextInputLayout;
 
     @BindView(R.id.textinputedittext_fragment_user_name)
     TextInputEditText mUserNameTextInputEditText;
@@ -103,21 +108,26 @@ public class UserNameFragment extends BaseFragment implements UsersAdapter.OnUse
 
     @OnClick(R.id.textview_fragment_user_name_start_game_and_register)
     void startGameClickListener() {
+        if (TextUtils.isEmpty(mUserNameTextInputEditText.getText())) {
+            showTastyToast(getString(R.string.text_fragment_user_name_empty_toast), TastyToast.WARNING);
+            mUserNameTextInputLayout.setError(getString(R.string.text_fragment_user_name_empty_text_input_layout));
+            return;
+        }
+        mUserNameTextInputLayout.setError(getString(R.string.empty));
+
         final User newUser = new User(mUserNameTextInputEditText.getText().toString());
         mUserNameViewModel.saveUser(mUserDataSource, newUser)
                 .observe(this, new Observer<Boolean>() {
                     @Override
                     public void onChanged(@Nullable Boolean aBoolean) {
                         if (aBoolean == Boolean.TRUE) {
-                            TastyToast.makeText(getContext(), getString(R.string.text_fragment_user_name_account_created),
-                                    TastyToast.LENGTH_SHORT,
-                                    TastyToast.SUCCESS).show();
+                            showTastyToast(getString(R.string.text_fragment_user_name_account_created),
+                                    TastyToast.SUCCESS);
 
                             mTestActivityNavigation.showTestFragment(newUser);
                         } else {
-                            TastyToast.makeText(getContext(), getString(R.string.text_fragment_user_name_user_already_exist),
-                                    TastyToast.LENGTH_SHORT,
-                                    TastyToast.ERROR).show();
+                            showTastyToast(getString(R.string.text_fragment_user_name_user_already_exist),
+                                    TastyToast.ERROR);
                         }
                     }
                 });
