@@ -10,7 +10,7 @@
     </data>
 
     <com.daimajia.swipe.SwipeLayout
-        android:id="@+id/swipelayout_fargment_user_name"
+        android:id="@+id/swipelayout_fragment_user_name"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background_gradient"
@@ -38,8 +38,8 @@
 
             <ImageView
                 android:id="@+id/circleimageview_fragment_user_name_avatar"
-                android:layout_width="@dimen/size_app_logo"
-                android:layout_height="@dimen/size_app_logo"
+                android:layout_width="@dimen/size_user_avatar"
+                android:layout_height="@dimen/size_user_avatar"
                 android:contentDescription="@string/empty"
                 android:src="@drawable/ic_user"/>
 
@@ -57,15 +57,10 @@
 
             <TextView
                 android:id="@+id/textview_fragment_user_name_start_game_and_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/selector_action_button"
-                android:padding="@dimen/margin_all_default"
+                style="@style/styleActionButton"
+                android:layout_marginTop="@dimen/margin_all_default"
                 android:text="@string/text_fragment_user_name_register_user_and_start_game"
-                android:textAlignment="center"
-                android:textAllCaps="true"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/textsize_all_body"/>
+                android:textAlignment="center"/>
         </LinearLayout>
     </com.daimajia.swipe.SwipeLayout>
 

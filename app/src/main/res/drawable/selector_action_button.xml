@@ -2,25 +2,25 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true">
         <shape>
-            <solid android:color="#993F51B5" />
-            <corners android:radius="5dp" />
-            <stroke android:width="2px" android:color="#fff" />
+            <solid android:color="#B3E5FC"/>
+            <corners android:radius="50dp"/>
+            <stroke android:width="2px" android:color="#0288D1"/>
         </shape>
     </item>
 
     <item android:state_enabled="false">
         <shape android:shape="rectangle">
-            <solid android:color="@color/colorButtonDisabled" />
-            <corners android:radius="5dp" />
-            <stroke android:width="2px" android:color="#fff" />
+            <solid android:color="@color/colorButtonDisabled"/>
+            <corners android:radius="50dp"/>
+            <stroke android:width="2px" android:color="#0288D1"/>
         </shape>
     </item>
 
     <item>
         <shape>
-            <solid android:color="#B3E5FC" />
-            <corners android:radius="5dp" />
-            <stroke android:width="2px" android:color="#B3E5FC" />
+            <solid android:color="#fff"/>
+            <corners android:radius="50dp"/>
+            <stroke android:width="2px" android:color="#0288D1"/>
         </shape>
     </item>
 </selector>

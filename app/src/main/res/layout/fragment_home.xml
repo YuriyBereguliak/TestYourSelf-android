@@ -55,15 +55,14 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_marginBottom="@dimen/margin_all_bigger"
-                android:layout_marginEnd="@dimen/margin_all_biggest"
-                android:layout_marginLeft="@dimen/margin_all_biggest"
-                android:layout_marginRight="@dimen/margin_all_biggest"
-                android:layout_marginStart="@dimen/margin_all_biggest"
+                android:layout_marginEnd="@dimen/margin_all_bigger"
+                android:layout_marginLeft="@dimen/margin_all_bigger"
+                android:layout_marginRight="@dimen/margin_all_bigger"
+                android:layout_marginStart="@dimen/margin_all_bigger"
                 android:background="?attr/selectableItemBackground">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/styleActionButton"
                     android:gravity="center"
                     android:text="@string/text_fragment_home_start_text"/>
             </FrameLayout>

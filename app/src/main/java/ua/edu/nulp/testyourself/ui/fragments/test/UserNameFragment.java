@@ -39,7 +39,7 @@ import ua.edu.nulp.testyourself.utils.L;
 
 public class UserNameFragment extends BaseFragment implements UsersAdapter.OnUserClickListener {
 
-    @BindView(R.id.swipelayout_fargment_user_name)
+    @BindView(R.id.swipelayout_fragment_user_name)
     SwipeLayout mSwipeLayout;
 
     @BindView(R.id.textinputedittext_fragment_user_name)

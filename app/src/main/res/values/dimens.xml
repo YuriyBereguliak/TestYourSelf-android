@@ -25,6 +25,7 @@
     <dimen name="textsize_all_display_3">56dp</dimen>
     <dimen name="textsize_all_display_4">112dp</dimen>
     <dimen name="size_app_logo">110dp</dimen>
+    <dimen name="size_user_avatar">170dp</dimen>
 
     <dimen name="height_divider">2dp</dimen>
     <dimen name="size_user_avatar_image_view">48dp</dimen>

@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background_gradient"
-    android:gravity="center"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/background_gradient"
+              android:gravity="center"
+              android:orientation="vertical">
 
     <ImageView
+        android:id="@+id/imageview_activity_splash"
         android:layout_width="@dimen/size_app_logo"
         android:layout_height="@dimen/size_app_logo"
-        android:src="@drawable/ic_app_logo" />
+        android:contentDescription="@string/empty"
+        android:src="@drawable/ic_app_logo"
+        android:tint="@android:color/white"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -17,5 +20,6 @@
         android:gravity="center"
         android:text="@string/app_name"
         android:textAlignment="center"
-        android:textSize="@dimen/textsize_all_headline" />
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/textsize_all_headline"/>
 </LinearLayout>
