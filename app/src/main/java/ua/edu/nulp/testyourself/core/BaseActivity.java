@@ -1,5 +1,6 @@
 package ua.edu.nulp.testyourself.core;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.arch.lifecycle.LifecycleFragment;
 import android.content.Intent;
@@ -13,6 +14,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 
 import com.greysonparrelli.permiso.Permiso;
+
+import java.util.List;
 
 import ua.edu.nulp.testyourself.App;
 import ua.edu.nulp.testyourself.R;
@@ -86,8 +89,26 @@ public abstract class BaseActivity extends LifecycleAppBarActivity
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        slideBottomReverseTransAnimation();
+
+        @SuppressLint("RestrictedApi") List<Fragment> fragmentList = getSupportFragmentManager().getFragments();
+
+        boolean handled = false;
+        for (Fragment fragment : fragmentList) {
+            if (fragment == null) {
+                break;
+            }
+            if (fragment instanceof BaseFragment) {
+                handled = ((BaseFragment) fragment).onBackPressed();
+                if (handled) {
+                    break;
+                }
+            }
+        }
+
+        if (!handled) {
+            super.onBackPressed();
+            slideBottomReverseTransAnimation();
+        }
     }
 
     @Override

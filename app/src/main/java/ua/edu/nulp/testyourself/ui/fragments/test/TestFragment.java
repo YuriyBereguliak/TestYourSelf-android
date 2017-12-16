@@ -1,8 +1,10 @@
 package ua.edu.nulp.testyourself.ui.fragments.test;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.DialogInterface;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,13 +55,20 @@ public class TestFragment extends BaseFragment implements OnCancelTestClickListe
         ButterKnife.bind(this, mBinding.getRoot());
         initViewModel();
         initBindingView();
+        loadTestData();
+    }
+
+    @Override
+    public boolean onBackPressed() {
+        initFinishTestDialog();
+        return true;
     }
     //endregion
 
     //region OnCancelTestClickListener
     @Override
     public void onCancelTest() {
-
+        initFinishTestDialog();
     }
     //endregion
 
@@ -74,6 +83,29 @@ public class TestFragment extends BaseFragment implements OnCancelTestClickListe
         mTestViewModel.setLifecycleOwner(this);
 
         mBinding.setViewModel(mTestViewModel);
+    }
+
+    private void loadTestData() {
+
+    }
+
+    private void initFinishTestDialog() {
+        new AlertDialog.Builder(getActivity())
+                .setTitle(R.string.text_fragment_test_attention_title)
+                .setMessage(R.string.test_fragment_test_dialog_message)
+                .setPositiveButton(R.string.test_fragment_test_positive_button_label, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        getActivity().finish();
+                    }
+                })
+                .setNegativeButton(R.string.text_fragment_test_negative_button_label, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                })
+                .show();
     }
     //endregion
 
