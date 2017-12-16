@@ -1,0 +1,28 @@
+[
+	{
+		"task": {
+			"task_id" : 1,
+			"task_text" : "Таск 1"
+		},
+		"choices" : [
+				{
+				"choice_id" : 1,
+				"choice_text" : "Choise",
+				"choise_is_true" : 0,
+				"task_id" : 1
+				},
+				{
+				"choice_id" : 1,
+				"choice_text" : "Choise_2",
+				"choise_is_true" : 1,
+				"task_id" : 1
+				},
+				{
+				"choice_id" : 1,
+				"choice_text" : "Choise",
+				"choise_is_true" : 0,
+				"task_id" : 1
+				},
+		]
+	}
+]
