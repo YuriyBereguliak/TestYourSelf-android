@@ -89,7 +89,12 @@ public class UserNameFragment extends BaseFragment implements UsersAdapter.OnUse
     //region OnUserClickListener
     @Override
     public void onUserClickListener(User user) {
+        if (user == null) {
+            L.e("User == null");
+            return;
+        }
 
+        mTestActivityNavigation.showTestFragment(user);
     }
     //endregion
 
@@ -101,7 +106,8 @@ public class UserNameFragment extends BaseFragment implements UsersAdapter.OnUse
 
     @OnClick(R.id.textview_fragment_user_name_start_game_and_register)
     void startGameClickListener() {
-        mUserNameViewModel.saveUser(mUserDataSource, new User(mUserNameTextInputEditText.getText().toString()))
+        final User newUser = new User(mUserNameTextInputEditText.getText().toString());
+        mUserNameViewModel.saveUser(mUserDataSource, newUser)
                 .observe(this, new Observer<Boolean>() {
                     @Override
                     public void onChanged(@Nullable Boolean aBoolean) {
@@ -110,7 +116,7 @@ public class UserNameFragment extends BaseFragment implements UsersAdapter.OnUse
                                     TastyToast.LENGTH_SHORT,
                                     TastyToast.SUCCESS).show();
 
-                            mTestActivityNavigation.showTestFragment();
+                            mTestActivityNavigation.showTestFragment(newUser);
                         } else {
                             TastyToast.makeText(getContext(), getString(R.string.text_fragment_user_name_user_already_exist),
                                     TastyToast.LENGTH_SHORT,

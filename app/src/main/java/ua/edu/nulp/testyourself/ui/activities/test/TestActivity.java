@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import ua.edu.nulp.testyourself.R;
 import ua.edu.nulp.testyourself.core.BaseActivity;
 import ua.edu.nulp.testyourself.di.activity.ActivityComponent;
+import ua.edu.nulp.testyourself.model.User;
 import ua.edu.nulp.testyourself.ui.fragments.test.UserNameFragment;
 
 /**
@@ -45,7 +46,7 @@ public class TestActivity extends BaseActivity implements TestActivityNavigation
     }
 
     @Override
-    public void showTestFragment() {
+    public void showTestFragment(User user) {
 
     }
     //endregion

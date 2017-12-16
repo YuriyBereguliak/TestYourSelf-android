@@ -4,7 +4,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import ua.edu.nulp.testyourself.R;
 import ua.edu.nulp.testyourself.model.User;
+import ua.edu.nulp.testyourself.utils.L;
 
 /**
  * TestYourSelf-android
@@ -48,7 +53,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
 
     @Override
     public void onBindViewHolder(UserViewHolder holder, int position) {
-        holder.bindView(mUsers.get(position));
+        holder.bindView(mUsers.get(position), mOnUserClickListener);
     }
 
     @Override
@@ -57,10 +62,16 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
     }
     //endregion
 
-    //region Utility structures
+    //region RecyclerView.ViewHolder
     static class UserViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.text)
+        @BindView(R.id.linearlayout_fragment_home_action_button_container)
+        LinearLayout mUserContainerLinearLayout;
+
+        @BindView(R.id.imageview_item_user_avatar)
+        ImageView mUserAvatarImageView;
+
+        @BindView(R.id.textview_item_user_username)
         TextView mTextView;
 
         UserViewHolder(View itemView) {
@@ -69,11 +80,28 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
             ButterKnife.bind(this, itemView);
         }
 
-        public void bindView(User user) {
+        public void bindView(final User user, final OnUserClickListener onUserClickListener) {
+
+            mUserContainerLinearLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onUserClickListener != null && getAdapterPosition() != RecyclerView.NO_POSITION) {
+                        onUserClickListener.onUserClickListener(user);
+                    } else {
+                        L.e("Can`t set user details");
+                    }
+                }
+            });
+
             mTextView.setText(user.getUserName());
+            Glide.with(mUserAvatarImageView)
+                    .load(user.getUserAvatar())
+                    .into(mUserAvatarImageView);
         }
     }
+    //endregion
 
+    //region Utility structures
     public interface OnUserClickListener {
         void onUserClickListener(User user);
     }
