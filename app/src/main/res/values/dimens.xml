@@ -10,6 +10,8 @@
     <dimen name="margin_all_medium">12dp</dimen>
     <dimen name="margin_all_default">16dp</dimen>
     <dimen name="margin_all_big">32dp</dimen>
+    <dimen name="margin_all_bigger">48dp</dimen>
+    <dimen name="margin_all_biggest">72dp</dimen>
 
     <!--Default text sizes, per the Android Design guidelines.
     See {@link https://material.io/guidelines/style/typography.html#typography-styles}-->

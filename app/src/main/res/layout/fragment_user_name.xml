@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
             name="userNameViewModel"
-            type="ua.edu.nulp.testyourself.ui.viewmodels.UserNameViewModel" />
+            type="ua.edu.nulp.testyourself.ui.viewmodels.UserNameViewModel"/>
     </data>
 
     <com.daimajia.swipe.SwipeLayout
@@ -26,7 +26,7 @@
                 android:id="@+id/recyclerview_fragment_user_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layoutManager="LinearLayoutManager" />
+                app:layoutManager="LinearLayoutManager"/>
         </LinearLayout>
 
         <LinearLayout
@@ -40,7 +40,8 @@
                 android:id="@+id/circleimageview_fragment_user_name_avatar"
                 android:layout_width="@dimen/size_app_logo"
                 android:layout_height="@dimen/size_app_logo"
-                android:src="@drawable/ic_user" />
+                android:contentDescription="@string/empty"
+                android:src="@drawable/ic_user"/>
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/textinputlayout_fragment_user_name"
@@ -51,7 +52,7 @@
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/textinputedittext_fragment_user_name"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"/>
             </android.support.design.widget.TextInputLayout>
 
             <TextView
@@ -64,7 +65,7 @@
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/textsize_all_body" />
+                android:textSize="@dimen/textsize_all_body"/>
         </LinearLayout>
     </com.daimajia.swipe.SwipeLayout>
 
