@@ -58,7 +58,6 @@
             <TextView
                 android:id="@+id/textview_fragment_user_name_start_game_and_register"
                 style="@style/styleActionButton"
-                android:layout_marginTop="@dimen/margin_all_default"
                 android:text="@string/text_fragment_user_name_register_user_and_start_game"
                 android:textAlignment="center"/>
         </LinearLayout>
