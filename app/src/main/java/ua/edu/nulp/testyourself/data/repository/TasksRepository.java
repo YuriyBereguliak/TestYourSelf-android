@@ -48,6 +48,7 @@ public class TasksRepository implements TasksDataSource {
             public void run() {
                 String json = loadJSONFromAsset();
                 if (TextUtils.isEmpty(json)) {
+                    L.e("Json file is empty");
                     return;
                 }
 

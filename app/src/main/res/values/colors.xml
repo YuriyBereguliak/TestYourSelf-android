@@ -6,6 +6,13 @@
     <color name="colorAccent">#FFC107</color>
 
     <color name="colorButtonDisabled">#ffBDBDBD</color>
-    <color name="colorDivider">#ffBDBDBD</color>
+
+    <color name="colorTextPrimary">#DE000000</color> <!-- 87% opacity -->
+    <color name="colorTextSecondary">#8A000000</color> <!-- 54% opacity -->
+    <color name="colorTextHint">#61000000</color> <!-- 38% opacity -->
+    <color name="colorTextPrimaryLight">#FFFFFF</color> <!-- 100% opacity -->
+    <color name="colorTextSecondaryLight">#B3FFFFFF</color> <!-- 70% opacity -->
+    <color name="colorTextHintLight">#80FFFFFF</color> <!-- 50% opacity -->
+    <color name="colorDivider">#1F000000</color> <!-- 12% opacity -->
 
 </resources>

@@ -27,4 +27,10 @@
         <item name="android:textSize">@dimen/textsize_all_body</item>
         <item name="android:layout_margin">@dimen/margin_all_big</item>
     </style>
+
+    <style name="styleDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/height_divider</item>
+        <item name="android:background">@color/colorDivider</item>
+    </style>
 </resources>

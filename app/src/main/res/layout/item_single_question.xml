@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="task"
+            type="ua.edu.nulp.testyourself.model.Task"/>
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:shadowColor="@color/colorDivider">
+
+        <TextView
+            android:id="@+id/textview_item_single_question_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_all_default"
+            android:text="@{task.taskName}"
+            android:textColor="@color/colorTextPrimaryLight"
+            android:textSize="@dimen/textsize_all_subheading"
+            android:textStyle="bold"/>
+
+        <View
+            style="@style/styleDivider"
+            android:layout_marginEnd="@dimen/margin_all_default"
+            android:layout_marginLeft="@dimen/margin_all_default"
+            android:layout_marginRight="@dimen/margin_all_default"
+            android:layout_marginStart="@dimen/margin_all_default"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_all_small"
+            android:layout_marginTop="@dimen/margin_all_small"
+            android:text="@string/text_fragment_test_select_one_choice"
+            android:textAlignment="center"
+            android:textColor="@color/colorTextSecondary"/>
+
+        <View
+            style="@style/styleDivider"
+            android:layout_marginEnd="@dimen/margin_all_default"
+            android:layout_marginLeft="@dimen/margin_all_default"
+            android:layout_marginRight="@dimen/margin_all_default"
+            android:layout_marginStart="@dimen/margin_all_default"/>
+
+        <RadioGroup
+            android:id="@+id/radiogroup_item_single_question_choices"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_all_default"/>
+    </LinearLayout>
+</layout>
