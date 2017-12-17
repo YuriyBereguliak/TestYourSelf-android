@@ -35,7 +35,7 @@ import ua.edu.nulp.testyourself.utils.L;
  * Created by Yuriy Bereguliak on 16.12.2017.
  */
 
-public class TestFragment extends BaseFragment implements OnCancelTestClickListener, TestAdapter.OnSingleChoiceSelected {
+public class TestFragment extends BaseFragment implements OnCancelTestClickListener, TestAdapter.OnSingleChoiceSelected, TestAdapter.OnMultiChoiceSelected {
 
     private static final String ARGUMENT_USER = "ua.edu.nulp.testyourself.ui.fragments.test.USER";
 
@@ -92,11 +92,17 @@ public class TestFragment extends BaseFragment implements OnCancelTestClickListe
     }
     //endregion
 
-
     //region OnSingleChoiceSelected
     @Override
-    public void onSingleChoice(int taskId, int position) {
-        mTestViewModel.updateSingleItemsSelect(mAdapter.getTaskDetails(), taskId, position, mThreadExecutor);
+    public void onSingleChoice(int taskId, int choiceId) {
+        mTestViewModel.updateSingleItemsSelect(mAdapter.getTaskDetails(), taskId, choiceId);
+    }
+    //endregion
+
+    //region OnMultiChoiceSelected
+    @Override
+    public void onMultiChoice(int taskId, int choiceId, boolean isChecked) {
+        mTestViewModel.updateMultiItemChecked(mAdapter.getTaskDetails(), taskId, choiceId, isChecked);
     }
     //endregion
 
@@ -105,6 +111,7 @@ public class TestFragment extends BaseFragment implements OnCancelTestClickListe
         if (mAdapter == null) {
             mAdapter = new TestAdapter();
             mAdapter.setOnSingleChoiceSelected(this);
+            mAdapter.setOnMultiChoiceSelected(this);
         }
         mBinding.recyclerviewFragmentTestQuestions.setLayoutManager(new LinearLayoutManager(getContext()));
         mBinding.recyclerviewFragmentTestQuestions.setAdapter(mAdapter);

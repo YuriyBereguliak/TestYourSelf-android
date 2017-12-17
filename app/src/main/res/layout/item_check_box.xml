@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="taskId"
+            type="Integer"/>
+
+        <variable
+            name="choice"
+            type="ua.edu.nulp.testyourself.model.Choice"/>
+    </data>
+
+    <android.support.v7.widget.AppCompatCheckBox
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/checkbox_item_check_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="@{choice.check}"
+        android:text="@{choice.choiceText}"
+        android:textColor="@android:color/white"/>
+</layout>

@@ -4,10 +4,13 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.support.annotation.IdRes;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.AppCompatRadioButton;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 
 import java.util.ArrayList;
@@ -16,6 +19,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ua.edu.nulp.testyourself.R;
+import ua.edu.nulp.testyourself.databinding.ItemCheckBoxBinding;
 import ua.edu.nulp.testyourself.databinding.ItemMultiQuestionsBinding;
 import ua.edu.nulp.testyourself.databinding.ItemSingleQuestionBinding;
 import ua.edu.nulp.testyourself.model.Choice;
@@ -33,9 +37,14 @@ public class TestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<TaskDetails> mTaskDetails = new ArrayList<>();
 
     private OnSingleChoiceSelected mOnSingleChoiceSelected;
+    private OnMultiChoiceSelected mOnMultiChoiceSelected;
 
     public void setOnSingleChoiceSelected(OnSingleChoiceSelected onSingleChoiceSelected) {
         mOnSingleChoiceSelected = onSingleChoiceSelected;
+    }
+
+    public void setOnMultiChoiceSelected(OnMultiChoiceSelected onMultiChoiceSelected) {
+        mOnMultiChoiceSelected = onMultiChoiceSelected;
     }
 
     public List<TaskDetails> getTaskDetails() {
@@ -79,7 +88,7 @@ public class TestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 ((TestSingleViewHolder) holder).bind(mTaskDetails.get(position), mOnSingleChoiceSelected);
                 break;
             case QuestionType.MULTI:
-                ((TestMultipleViewHolder) holder).bind(mTaskDetails.get(position));
+                ((TestMultipleViewHolder) holder).bind(mTaskDetails.get(position), mOnMultiChoiceSelected);
                 break;
             case QuestionType.TRANSLATE:
                 ((TestSingleViewHolder) holder).bind(mTaskDetails.get(position), mOnSingleChoiceSelected);
@@ -157,23 +166,47 @@ public class TestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     static class TestMultipleViewHolder extends RecyclerView.ViewHolder {
 
+        @BindView(R.id.linearlayout_item_multi_question_container)
+        LinearLayout mCheckBoxLinearLayout;
+
         private ItemMultiQuestionsBinding mBinding;
 
         TestMultipleViewHolder(ItemMultiQuestionsBinding binding) {
             super(binding.getRoot());
             mBinding = binding;
+            ButterKnife.bind(this, mBinding.getRoot());
         }
 
-        void bind(TaskDetails details) {
+        void bind(final TaskDetails details, final OnMultiChoiceSelected onMultiChoiceSelected) {
             mBinding.setTask(details.mTask);
 
+            mCheckBoxLinearLayout.removeAllViews();
+            for (final Choice choice : details.mChoices) {
+
+                ItemCheckBoxBinding checkBoxBinding = DataBindingUtil.inflate(LayoutInflater.from(mBinding.getRoot().getContext()),
+                        R.layout.item_check_box, mCheckBoxLinearLayout, false);
+                checkBoxBinding.setChoice(choice);
+
+                ((AppCompatCheckBox) checkBoxBinding.getRoot().findViewById(R.id.checkbox_item_check_box))
+                        .setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                            @Override
+                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                onMultiChoiceSelected.onMultiChoice(details.mTask.getTaskId(), choice.getChoiceId(), isChecked);
+                            }
+                        });
+                mCheckBoxLinearLayout.addView(checkBoxBinding.getRoot());
+            }
         }
     }
     //endregion
 
     //region Utility structures
     public interface OnSingleChoiceSelected {
-        void onSingleChoice(int taskId, int position);
+        void onSingleChoice(int taskId, int choiceId);
+    }
+
+    public interface OnMultiChoiceSelected {
+        void onMultiChoice(int taskId, int choiceId, boolean isChecked);
     }
     //endregion
 }

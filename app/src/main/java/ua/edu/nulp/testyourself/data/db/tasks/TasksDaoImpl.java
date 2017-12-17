@@ -21,7 +21,7 @@ import ua.edu.nulp.testyourself.model.TaskDetails;
 public interface TasksDaoImpl extends TasksDao {
 
     @Override
-    @Query("SELECT * FROM Tasks ORDER BY RANDOM() LIMIT 10")
+    @Query("SELECT * FROM Tasks")
     LiveData<List<TaskDetails>> getAllTasks();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
