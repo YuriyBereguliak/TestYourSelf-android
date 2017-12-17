@@ -148,7 +148,7 @@ public class TestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 radioButton.setText(choice.getChoiceText());
                 radioButton.setChecked(choice.isCheck());
                 radioButton.setTextColor(ContextCompat.getColor(mBinding.getRoot().getContext(),
-                        R.color.colorTextPrimaryLight));
+                        R.color.colorTextPrimary));
                 radioGroup.addView(radioButton);
 
             }

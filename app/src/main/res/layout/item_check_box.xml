@@ -19,5 +19,5 @@
         android:layout_height="wrap_content"
         android:checked="@{choice.check}"
         android:text="@{choice.choiceText}"
-        android:textColor="@android:color/white"/>
+        android:textColor="@color/colorTextPrimary"/>
 </layout>
