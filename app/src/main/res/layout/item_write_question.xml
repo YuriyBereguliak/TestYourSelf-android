@@ -64,6 +64,8 @@
                 android:id="@+id/textview_item_write_questions_submit"
                 style="@style/styleActionButtonTest"
                 android:text="@string/text_fragment_test_submit_answer_button_label"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
                 android:textAlignment="center"/>
         </LinearLayout>
     </android.support.v7.widget.CardView>
