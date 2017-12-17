@@ -1,6 +1,7 @@
 package ua.edu.nulp.testyourself.di.database;
 
 import android.arch.persistence.room.Room;
+import android.content.Context;
 
 import javax.inject.Singleton;
 
@@ -64,8 +65,8 @@ public class DatabaseModule {
 
     @Provides
     @Singleton
-    TasksDataSource provideTasksRepository(ThreadExecutor threadExecutor, TasksDaoImpl tasksDao) {
-        return new TasksRepository(threadExecutor, tasksDao);
+    TasksDataSource provideTasksRepository(Context context, ThreadExecutor threadExecutor, TasksDaoImpl tasksDao) {
+        return new TasksRepository(context, threadExecutor, tasksDao);
     }
 
     @Provides

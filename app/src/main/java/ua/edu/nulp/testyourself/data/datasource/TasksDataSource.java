@@ -14,6 +14,9 @@ import ua.edu.nulp.testyourself.model.TaskDetails;
  */
 
 public interface TasksDataSource {
+
+    void initDatabase();
+
     LiveData<List<TaskDetails>> getAllTasks();
 
     void insert(Task task);
