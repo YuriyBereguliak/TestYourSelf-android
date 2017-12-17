@@ -4,6 +4,8 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * TestYourSelf-android
  * Created by Yuriy Bereguliak on 12/12/17.
@@ -13,16 +15,35 @@ import android.arch.persistence.room.PrimaryKey;
 public class Choice {
 
     @PrimaryKey()
+    @ColumnInfo(name = "choice_id")
+    @SerializedName("choice_id")
+    private int mChoiceId;
+
     @ColumnInfo(name = "choice_text")
+    @SerializedName("choice_text")
     private String mChoiceText;
 
     @ColumnInfo(name = "choice_is_true")
+    @SerializedName("choice_is_true")
     private boolean mIsChoiceTrue;
 
     @ColumnInfo(name = "task_id")
-    private String mTaskId;
+    @SerializedName("task_id")
+    private int mTaskId;
 
     //region Getters and Setters
+
+    public int getChoiceId() {
+        return mChoiceId;
+    }
+
+    public void setChoiceId(int choiceId) {
+        mChoiceId = choiceId;
+    }
+
+    public void setChoiceTrue(boolean choiceTrue) {
+        mIsChoiceTrue = choiceTrue;
+    }
 
     public String getChoiceText() {
         return mChoiceText;
@@ -40,11 +61,11 @@ public class Choice {
         mIsChoiceTrue = choiceTrue;
     }
 
-    public String getTaskId() {
+    public int getTaskId() {
         return mTaskId;
     }
 
-    public void setTaskId(String taskId) {
+    public void setTaskId(int taskId) {
         mTaskId = taskId;
     }
 
@@ -54,6 +75,7 @@ public class Choice {
     @Override
     public String toString() {
         return "Choice{" +
+                "mChoiceId=" + mChoiceId +
                 ", mChoiceText='" + mChoiceText + '\'' +
                 ", mIsChoiceTrue=" + mIsChoiceTrue +
                 ", mTaskId=" + mTaskId +

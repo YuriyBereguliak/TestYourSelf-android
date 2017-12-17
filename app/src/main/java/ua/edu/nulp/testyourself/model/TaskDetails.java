@@ -3,6 +3,8 @@ package ua.edu.nulp.testyourself.model;
 import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Relation;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
@@ -13,9 +15,11 @@ import java.util.List;
 public class TaskDetails {
 
     @Embedded
+    @SerializedName("task")
     public Task mTask;
 
-    @Relation(parentColumn = "task_text", entityColumn = "task_id", entity = Choice.class)
+    @Relation(parentColumn = "task_id", entityColumn = "task_id", entity = Choice.class)
+    @SerializedName("choices")
     public List<Choice> mChoices;
 
     //region Object
