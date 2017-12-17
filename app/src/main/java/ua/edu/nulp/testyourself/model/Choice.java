@@ -25,7 +25,7 @@ public class Choice {
 
     @ColumnInfo(name = "choice_is_true")
     @SerializedName("choice_is_true")
-    private boolean mIsChoiceTrue;
+    private int mIsChoiceTrue;
 
     @ColumnInfo(name = "task_id")
     @SerializedName("task_id")
@@ -41,10 +41,6 @@ public class Choice {
         mChoiceId = choiceId;
     }
 
-    public void setChoiceTrue(boolean choiceTrue) {
-        mIsChoiceTrue = choiceTrue;
-    }
-
     public String getChoiceText() {
         return mChoiceText;
     }
@@ -53,11 +49,15 @@ public class Choice {
         mChoiceText = choiceText;
     }
 
-    public boolean isChoiceTrue() {
+    public int getIsChoiceTrue() {
         return mIsChoiceTrue;
     }
 
-    public void setIsChoiceTrue(boolean choiceTrue) {
+    public boolean isChoiceTrue() {
+        return mIsChoiceTrue == 1;
+    }
+
+    public void setIsChoiceTrue(int choiceTrue) {
         mIsChoiceTrue = choiceTrue;
     }
 
