@@ -20,6 +20,7 @@ import butterknife.ButterKnife;
 import ua.edu.nulp.testyourself.R;
 import ua.edu.nulp.testyourself.core.BaseActivity;
 import ua.edu.nulp.testyourself.core.BaseFragment;
+import ua.edu.nulp.testyourself.core.executor.ThreadExecutor;
 import ua.edu.nulp.testyourself.data.datasource.TasksDataSource;
 import ua.edu.nulp.testyourself.databinding.FragmentTextBinding;
 import ua.edu.nulp.testyourself.di.activity.ActivityComponent;
@@ -34,12 +35,15 @@ import ua.edu.nulp.testyourself.utils.L;
  * Created by Yuriy Bereguliak on 16.12.2017.
  */
 
-public class TestFragment extends BaseFragment implements OnCancelTestClickListener {
+public class TestFragment extends BaseFragment implements OnCancelTestClickListener, TestAdapter.OnSingleChoiceSelected {
 
     private static final String ARGUMENT_USER = "ua.edu.nulp.testyourself.ui.fragments.test.USER";
 
     @Inject
     TasksDataSource mTasksDataSource;
+
+    @Inject
+    ThreadExecutor mThreadExecutor;
 
     private TestAdapter mAdapter;
     private TestViewModel mTestViewModel;
@@ -88,10 +92,19 @@ public class TestFragment extends BaseFragment implements OnCancelTestClickListe
     }
     //endregion
 
+
+    //region OnSingleChoiceSelected
+    @Override
+    public void onSingleChoice(int taskId, int position) {
+        mTestViewModel.updateSingleItemsSelect(mAdapter.getTaskDetails(), taskId, position, mThreadExecutor);
+    }
+    //endregion
+
     //region Utility API
     private void initAdapter() {
         if (mAdapter == null) {
             mAdapter = new TestAdapter();
+            mAdapter.setOnSingleChoiceSelected(this);
         }
         mBinding.recyclerviewFragmentTestQuestions.setLayoutManager(new LinearLayoutManager(getContext()));
         mBinding.recyclerviewFragmentTestQuestions.setAdapter(mAdapter);

@@ -2,8 +2,10 @@ package ua.edu.nulp.testyourself.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -30,6 +32,10 @@ public class Choice {
     @ColumnInfo(name = "task_id")
     @SerializedName("task_id")
     private int mTaskId;
+
+    @Ignore
+    @Expose
+    private boolean mIsCheck;
 
     //region Getters and Setters
 
@@ -69,7 +75,14 @@ public class Choice {
         mTaskId = taskId;
     }
 
-//endregion
+    public boolean isCheck() {
+        return mIsCheck;
+    }
+
+    public void setCheck(boolean check) {
+        mIsCheck = check;
+    }
+    //endregion
 
     //region Object
     @Override
@@ -79,6 +92,7 @@ public class Choice {
                 ", mChoiceText='" + mChoiceText + '\'' +
                 ", mIsChoiceTrue=" + mIsChoiceTrue +
                 ", mTaskId=" + mTaskId +
+                ", mIsCheck=" + mIsCheck +
                 '}';
     }
     //endregion

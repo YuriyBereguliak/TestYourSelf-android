@@ -20,7 +20,7 @@
                   android:shadowColor="@color/colorDivider">
 
         <TextView
-            android:id="@+id/textview_item_single_question_text"
+            android:id="@+id/textview_item_multi_question_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@{task.taskName}"
@@ -35,17 +35,16 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_all_small"
             android:layout_marginTop="@dimen/margin_all_small"
-            android:text="@string/text_fragment_test_select_one_choice"
+            android:text="@string/text_fragment_test_select_multi_choices_text"
             android:textAlignment="center"
             android:textColor="@color/colorTextSecondaryLight"/>
 
         <View style="@style/styleDivider"/>
 
-        <RadioGroup
-            android:id="@+id/radiogroup_item_single_question_choices"
+        <LinearLayout
+            android:id="@+id/linearlayout_item_multi_question_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_all_default"
-            android:layout_marginTop="@dimen/margin_all_default"/>
+            android:orientation="vertical"/>
     </LinearLayout>
 </layout>
