@@ -3,15 +3,20 @@ package ua.edu.nulp.testyourself.ui.adapters;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.support.annotation.IdRes;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.AppCompatRadioButton;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +27,7 @@ import ua.edu.nulp.testyourself.R;
 import ua.edu.nulp.testyourself.databinding.ItemCheckBoxBinding;
 import ua.edu.nulp.testyourself.databinding.ItemMultiQuestionsBinding;
 import ua.edu.nulp.testyourself.databinding.ItemSingleQuestionBinding;
+import ua.edu.nulp.testyourself.databinding.ItemWriteQuestionBinding;
 import ua.edu.nulp.testyourself.model.Choice;
 import ua.edu.nulp.testyourself.model.TaskDetails;
 import ua.edu.nulp.testyourself.model.defs.QuestionType;
@@ -38,6 +44,11 @@ public class TestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private OnSingleChoiceSelected mOnSingleChoiceSelected;
     private OnMultiChoiceSelected mOnMultiChoiceSelected;
+    private onSubmitAnswerHandler mOnSubmitAnswerHandler;
+
+    public void setOnSubmitAnswerHandler(onSubmitAnswerHandler onSubmitAnswerHandler) {
+        mOnSubmitAnswerHandler = onSubmitAnswerHandler;
+    }
 
     public void setOnSingleChoiceSelected(OnSingleChoiceSelected onSingleChoiceSelected) {
         mOnSingleChoiceSelected = onSingleChoiceSelected;
@@ -64,14 +75,10 @@ public class TestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         switch (viewType) {
             case QuestionType.SINGLE:
                 return new TestSingleViewHolder((ItemSingleQuestionBinding) getData(parent, R.layout.item_single_question));
-            case QuestionType.INSERT:
-                return new TestSingleViewHolder((ItemSingleQuestionBinding) getData(parent, R.layout.item_single_question));
             case QuestionType.MULTI:
                 return new TestMultipleViewHolder((ItemMultiQuestionsBinding) getData(parent, R.layout.item_multi_questions));
-            case QuestionType.TRANSLATE:
-                return new TestSingleViewHolder((ItemSingleQuestionBinding) getData(parent, R.layout.item_single_question));
             case QuestionType.WRITE:
-                return new TestSingleViewHolder((ItemSingleQuestionBinding) getData(parent, R.layout.item_single_question));
+                return new WriteAnswerViewHolder((ItemWriteQuestionBinding) getData(parent, R.layout.item_write_question));
             default:
                 L.d("Unsupported item type");
         }
@@ -84,17 +91,11 @@ public class TestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             case QuestionType.SINGLE:
                 ((TestSingleViewHolder) holder).bind(mTaskDetails.get(position), mOnSingleChoiceSelected);
                 break;
-            case QuestionType.INSERT:
-                ((TestSingleViewHolder) holder).bind(mTaskDetails.get(position), mOnSingleChoiceSelected);
-                break;
             case QuestionType.MULTI:
                 ((TestMultipleViewHolder) holder).bind(mTaskDetails.get(position), mOnMultiChoiceSelected);
                 break;
-            case QuestionType.TRANSLATE:
-                ((TestSingleViewHolder) holder).bind(mTaskDetails.get(position), mOnSingleChoiceSelected);
-                break;
             case QuestionType.WRITE:
-                ((TestSingleViewHolder) holder).bind(mTaskDetails.get(position), mOnSingleChoiceSelected);
+                ((WriteAnswerViewHolder) holder).bind(mTaskDetails.get(position), mOnSubmitAnswerHandler);
                 break;
             default:
                 L.d("Unsupported item type");
@@ -198,6 +199,47 @@ public class TestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
         }
     }
+
+    static class WriteAnswerViewHolder extends RecyclerView.ViewHolder {
+
+        @BindView(R.id.textview_item_write_questions_submit)
+        TextView mSubmitTextView;
+
+        @BindView(R.id.textinputedittext_item_write_question)
+        TextInputEditText mAnswerTextInputEditText;
+
+        @BindView(R.id.textinputlayout_item_write_question)
+        TextInputLayout mAnswerTextInputLayout;
+
+        private ItemWriteQuestionBinding mBinding;
+
+        WriteAnswerViewHolder(ItemWriteQuestionBinding binding) {
+            super(binding.getRoot());
+            mBinding = binding;
+
+            ButterKnife.bind(this, mBinding.getRoot());
+        }
+
+        void bind(final TaskDetails details, final onSubmitAnswerHandler onSubmitAnswerHandler) {
+            mBinding.setTask(details.mTask);
+            mBinding.setAnswer(details.mChoices.get(0).getAnswer());
+
+            mSubmitTextView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (TextUtils.isEmpty(mAnswerTextInputEditText.getText())) {
+                        mAnswerTextInputLayout.setError(mBinding.getRoot().getContext()
+                                .getString(R.string.text_fragment_test_answer_can_not_be_emprt));
+                        return;
+                    }
+                    mAnswerTextInputLayout.setError("");
+
+                    onSubmitAnswerHandler.onSubmitAnswer(details.mTask.getTaskId(),
+                            mAnswerTextInputEditText.getText().toString());
+                }
+            });
+        }
+    }
     //endregion
 
     //region Utility structures
@@ -207,6 +249,10 @@ public class TestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public interface OnMultiChoiceSelected {
         void onMultiChoice(int taskId, int choiceId, boolean isChecked);
+    }
+
+    public interface onSubmitAnswerHandler {
+        void onSubmitAnswer(int taskId, String answer);
     }
     //endregion
 }

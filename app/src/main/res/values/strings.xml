@@ -20,4 +20,7 @@
     <string name="text_fragment_test_negative_button_label">No</string>
     <string name="text_fragment_test_select_one_choice">Please select one answer</string>
     <string name="text_fragment_test_select_multi_choices_text">Please select few answers</string>
+    <string name="text_fragment_test_select_write_text">Please write your answer</string>
+    <string name="text_fragment_test_submit_answer_button_label">Submit answer</string>
+    <string name="text_fragment_test_answer_can_not_be_emprt">Answer can not be empty</string>
 </resources>

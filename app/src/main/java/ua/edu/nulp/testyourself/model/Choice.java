@@ -37,6 +37,10 @@ public class Choice {
     @Expose
     private boolean mIsCheck;
 
+    @Ignore
+    @Expose
+    private String mAnswer;
+
     //region Getters and Setters
 
     public int getChoiceId() {
@@ -82,6 +86,14 @@ public class Choice {
     public void setCheck(boolean check) {
         mIsCheck = check;
     }
+
+    public String getAnswer() {
+        return mAnswer;
+    }
+
+    public void setAnswer(String answer) {
+        mAnswer = answer;
+    }
     //endregion
 
     //region Object
@@ -93,6 +105,7 @@ public class Choice {
                 ", mIsChoiceTrue=" + mIsChoiceTrue +
                 ", mTaskId=" + mTaskId +
                 ", mIsCheck=" + mIsCheck +
+                ", mAnswer='" + mAnswer + '\'' +
                 '}';
     }
     //endregion

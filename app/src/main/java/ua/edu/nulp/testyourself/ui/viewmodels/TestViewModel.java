@@ -70,5 +70,14 @@ public class TestViewModel extends AndroidViewModel {
             }
         }
     }
+
+    public void updateAnswerItem(List<TaskDetails> taskDetails, int taskId, String answer) {
+        for (TaskDetails details : taskDetails) {
+            if (taskId == details.mTask.getTaskId()) {
+                details.mChoices.get(0).setAnswer(answer);
+                break;
+            }
+        }
+    }
     //endregion
 }

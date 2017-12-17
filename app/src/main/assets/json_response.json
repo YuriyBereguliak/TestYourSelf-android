@@ -192,7 +192,7 @@
     "task": {
       "task_id": 8,
       "task_text": "Insert true - ",
-      "task_type": 2
+      "task_type": 0
     },
     "choices": [
       {
@@ -219,7 +219,7 @@
     "task": {
       "task_id": 9,
       "task_text": "Insert true - ",
-      "task_type": 2
+      "task_type": 1
     },
     "choices": [
       {
@@ -260,7 +260,7 @@
   {
     "task": {
       "task_id": 11,
-      "task_text": "write false - ",
+      "task_text": "write false  ",
       "task_type": 3
     },
     "choices": [
@@ -306,7 +306,7 @@
     "task": {
       "task_id": 14,
       "task_text": "translate false - ",
-      "task_type": 4
+      "task_type": 3
     },
     "choices": [
       {
@@ -321,7 +321,7 @@
     "task": {
       "task_id": 15,
       "task_text": "translate false - ",
-      "task_type": 4
+      "task_type": 3
     },
     "choices": [
       {
@@ -336,7 +336,7 @@
     "task": {
       "task_id": 15,
       "task_text": "translate false - ",
-      "task_type": 4
+      "task_type": 3
     },
     "choices": [
       {

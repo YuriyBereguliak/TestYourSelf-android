@@ -35,7 +35,8 @@ import ua.edu.nulp.testyourself.utils.L;
  * Created by Yuriy Bereguliak on 16.12.2017.
  */
 
-public class TestFragment extends BaseFragment implements OnCancelTestClickListener, TestAdapter.OnSingleChoiceSelected, TestAdapter.OnMultiChoiceSelected {
+public class TestFragment extends BaseFragment implements OnCancelTestClickListener,
+        TestAdapter.OnSingleChoiceSelected, TestAdapter.OnMultiChoiceSelected, TestAdapter.onSubmitAnswerHandler {
 
     private static final String ARGUMENT_USER = "ua.edu.nulp.testyourself.ui.fragments.test.USER";
 
@@ -106,12 +107,20 @@ public class TestFragment extends BaseFragment implements OnCancelTestClickListe
     }
     //endregion
 
+    //region onSubmitAnswerHandler
+    @Override
+    public void onSubmitAnswer(int taskId, String answer) {
+        mTestViewModel.updateAnswerItem(mAdapter.getTaskDetails(), taskId, answer);
+    }
+    //endregion
+
     //region Utility API
     private void initAdapter() {
         if (mAdapter == null) {
             mAdapter = new TestAdapter();
             mAdapter.setOnSingleChoiceSelected(this);
             mAdapter.setOnMultiChoiceSelected(this);
+            mAdapter.setOnSubmitAnswerHandler(this);
         }
         mBinding.recyclerviewFragmentTestQuestions.setLayoutManager(new LinearLayoutManager(getContext()));
         mBinding.recyclerviewFragmentTestQuestions.setAdapter(mAdapter);
