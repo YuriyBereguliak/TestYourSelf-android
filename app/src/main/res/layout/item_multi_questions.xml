@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:text="@{task.taskName}"
                 android:textColor="@color/colorTextPrimary"
-                android:textSize="@dimen/textsize_all_subheading"
+                android:textSize="@dimen/textsize_all_title"
                 android:textStyle="bold"/>
 
             <TextView

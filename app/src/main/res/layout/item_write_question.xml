@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:text="@{task.taskName}"
                 android:textColor="@color/colorTextPrimary"
-                android:textSize="@dimen/textsize_all_subheading"
+                android:textSize="@dimen/textsize_all_title"
                 android:textStyle="bold"/>
 
             <TextView
@@ -50,7 +50,6 @@
                 android:id="@+id/textinputlayout_item_write_question"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_all_default"
                 android:layout_marginTop="@dimen/margin_all_default"
                 app:errorEnabled="true">
 
