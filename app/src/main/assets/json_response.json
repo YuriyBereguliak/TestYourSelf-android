@@ -2,25 +2,25 @@
   {
     "task": {
       "task_id": 1,
-      "task_text": "Завдання 1",
+      "task_text": "Виберіть правильний переклад слова CAR",
       "task_type": 0
     },
     "choices": [
       {
         "choice_id": 1,
-        "choice_text": "Choise",
+        "choice_text": "Танк",
         "choice_is_true": 0,
         "task_id": 1
       },
       {
         "choice_id": 2,
-        "choice_text": "Choise_2",
+        "choice_text": "Машина",
         "choice_is_true": 1,
         "task_id": 1
       },
       {
         "choice_id": 3,
-        "choice_text": "Choise",
+        "choice_text": "Самокат",
         "choice_is_true": 0,
         "task_id": 1
       }
@@ -29,25 +29,25 @@
   {
     "task": {
       "task_id": 2,
-      "task_text": "Завдання 2",
+      "task_text": "Виберіть правильний переклад слова PHONE",
       "task_type": 0
     },
     "choices": [
       {
         "choice_id": 4,
-        "choice_text": "Choise_1",
+        "choice_text": "Мишка",
         "choice_is_true": 0,
         "task_id": 2
       },
       {
         "choice_id": 5,
-        "choice_text": "Choise_2",
+        "choice_text": "Телефон",
         "choice_is_true": 1,
         "task_id": 2
       },
       {
         "choice_id": 6,
-        "choice_text": "Choise_3",
+        "choice_text": "Клавіатура",
         "choice_is_true": 0,
         "task_id": 2
       }
@@ -56,27 +56,42 @@
   {
     "task": {
       "task_id": 5,
-      "task_text": "Завдання 5 multi",
+      "task_text": "Перекладіть слово MOUSE",
       "task_type": 1
     },
     "choices": [
       {
         "choice_id": 13,
-        "choice_text": "Choise",
+        "choice_text": "Миша(тварина)",
         "choice_is_true": 1,
         "task_id": 5
       },
       {
         "choice_id": 14,
-        "choice_text": "Choise_2",
-        "choice_is_true": 1,
+        "choice_text": "Клавіатура",
+        "choice_is_true": 0,
         "task_id": 5
       },
       {
         "choice_id": 15,
-        "choice_text": "Choise",
-        "choice_is_true": 0,
+        "choice_text": "Миша(клмпютерна)",
+        "choice_is_true": 1,
         "task_id": 5
+      }
+    ]
+  },
+  {
+    "task": {
+      "task_id": 15,
+      "task_text": "Введіть переклад слова WEATHER",
+      "task_type": 3
+    },
+    "choices": [
+      {
+        "choice_id": 34,
+        "choice_text": "погода",
+        "choice_is_true": 1,
+        "task_id": 15
       }
     ]
   }

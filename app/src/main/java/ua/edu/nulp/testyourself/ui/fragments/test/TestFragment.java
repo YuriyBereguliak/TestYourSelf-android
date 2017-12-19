@@ -160,8 +160,6 @@ public class TestFragment extends BaseFragment implements OnCancelTestClickListe
         }
 
         showTastyToast("Correct answers + " + correctAnswers, TastyToast.INFO);
-
-
     }
     //endregion
 
