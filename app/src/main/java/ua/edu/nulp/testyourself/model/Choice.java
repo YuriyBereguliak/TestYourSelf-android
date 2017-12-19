@@ -8,6 +8,8 @@ import android.arch.persistence.room.PrimaryKey;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import ua.edu.nulp.testyourself.model.defs.QuestionType;
+
 /**
  * TestYourSelf-android
  * Created by Yuriy Bereguliak on 12/12/17.
@@ -93,6 +95,19 @@ public class Choice {
 
     public void setAnswer(String answer) {
         mAnswer = answer;
+    }
+
+    public boolean isAnswerCorrect(@QuestionType int questionType) {
+        switch (questionType) {
+            case QuestionType.MULTI:
+                return isCheck() == isChoiceTrue();
+            case QuestionType.SINGLE:
+                return isCheck() == isChoiceTrue();
+            case QuestionType.WRITE:
+                return getAnswer().equalsIgnoreCase(getChoiceText());
+            default:
+                throw new IllegalArgumentException();
+        }
     }
     //endregion
 
