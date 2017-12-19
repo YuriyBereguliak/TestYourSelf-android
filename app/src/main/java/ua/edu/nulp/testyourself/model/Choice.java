@@ -41,7 +41,7 @@ public class Choice {
 
     @Ignore
     @Expose
-    private String mAnswer;
+    private String mAnswer = null;
 
     //region Getters and Setters
 
@@ -100,9 +100,9 @@ public class Choice {
     public boolean isAnswerCorrect(@QuestionType int questionType) {
         switch (questionType) {
             case QuestionType.MULTI:
-                return isCheck() == isChoiceTrue();
+                return isCheck() && isChoiceTrue();
             case QuestionType.SINGLE:
-                return isCheck() == isChoiceTrue();
+                return isCheck() && isChoiceTrue();
             case QuestionType.WRITE:
                 return getAnswer().equalsIgnoreCase(getChoiceText());
             default:

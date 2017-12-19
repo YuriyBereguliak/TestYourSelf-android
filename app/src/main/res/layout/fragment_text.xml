@@ -7,6 +7,10 @@
     <data>
 
         <variable
+            name="fabAction"
+            type="ua.edu.nulp.testyourself.model.handlers.OnActionClickListener"/>
+
+        <variable
             name="user"
             type="ua.edu.nulp.testyourself.model.User"/>
 
@@ -109,7 +113,18 @@
                         android:textSize="@dimen/textsize_all_subheading"/>
                 </LinearLayout>
             </FrameLayout>
-        </RelativeLayout>
 
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab_fragment_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="@dimen/margin_all_default"
+                android:onClick="@{() -> fabAction.onActionClick()}"
+                android:src="@drawable/ic_done_all"
+                android:visibility="gone"/>
+        </RelativeLayout>
     </FrameLayout>
 </layout>

@@ -8,9 +8,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.sdsmdg.tastytoast.TastyToast;
 
 import java.util.List;
 
@@ -24,8 +27,11 @@ import ua.edu.nulp.testyourself.core.executor.ThreadExecutor;
 import ua.edu.nulp.testyourself.data.datasource.TasksDataSource;
 import ua.edu.nulp.testyourself.databinding.FragmentTextBinding;
 import ua.edu.nulp.testyourself.di.activity.ActivityComponent;
+import ua.edu.nulp.testyourself.model.Choice;
 import ua.edu.nulp.testyourself.model.TaskDetails;
 import ua.edu.nulp.testyourself.model.User;
+import ua.edu.nulp.testyourself.model.defs.QuestionType;
+import ua.edu.nulp.testyourself.model.handlers.OnActionClickListener;
 import ua.edu.nulp.testyourself.ui.adapters.TestAdapter;
 import ua.edu.nulp.testyourself.ui.viewmodels.TestViewModel;
 import ua.edu.nulp.testyourself.utils.L;
@@ -36,7 +42,7 @@ import ua.edu.nulp.testyourself.utils.L;
  */
 
 public class TestFragment extends BaseFragment implements OnCancelTestClickListener,
-        TestAdapter.OnSingleChoiceSelected, TestAdapter.OnMultiChoiceSelected, TestAdapter.onSubmitAnswerHandler {
+        TestAdapter.OnSingleChoiceSelected, TestAdapter.OnMultiChoiceSelected, TestAdapter.onSubmitAnswerHandler, OnActionClickListener {
 
     private static final String ARGUMENT_USER = "ua.edu.nulp.testyourself.ui.fragments.test.USER";
 
@@ -67,6 +73,7 @@ public class TestFragment extends BaseFragment implements OnCancelTestClickListe
     @Override
     protected View bindView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_text, container, false);
+        mBinding.setFabAction(this);
         initAdapter();
         return mBinding.getRoot();
     }
@@ -114,6 +121,50 @@ public class TestFragment extends BaseFragment implements OnCancelTestClickListe
     }
     //endregion
 
+    //region OnActionClickListener
+    @Override
+    public void onActionClick() {
+        int correctAnswers = 0;
+        int it = 0;
+        for (TaskDetails details : mAdapter.getTaskDetails()) {
+            if (QuestionType.MULTI == details.mTask.getTaskType()) {
+                int trueAnswers = 0;
+                int trueChoices = 0;
+
+                // TODO: 19.12.2017 Fix multi choice
+
+                for (Choice choice : details.mChoices) {
+                    if (choice.isChoiceTrue()) {
+                        trueChoices++;
+                    }
+                }
+
+                for (Choice choice : details.mChoices) {
+                    if (choice.isAnswerCorrect(details.mTask.getTaskType())) {
+                        trueAnswers++;
+                    }
+                }
+
+                if (trueAnswers == trueChoices) {
+                    correctAnswers++;
+                }
+            } else {
+                for (Choice choice : details.mChoices) {
+                    L.d("Choice = " + choice.getChoiceText() + "  " + choice.isAnswerCorrect(details.mTask.getTaskType()) + "");
+                    if (choice.isAnswerCorrect(details.mTask.getTaskType())) {
+                        correctAnswers++;
+                        break;
+                    }
+                }
+            }
+        }
+
+        showTastyToast("Correct answers + " + correctAnswers, TastyToast.INFO);
+
+
+    }
+    //endregion
+
     //region Utility API
     private void initAdapter() {
         if (mAdapter == null) {
@@ -122,8 +173,22 @@ public class TestFragment extends BaseFragment implements OnCancelTestClickListe
             mAdapter.setOnMultiChoiceSelected(this);
             mAdapter.setOnSubmitAnswerHandler(this);
         }
-        mBinding.recyclerviewFragmentTestQuestions.setLayoutManager(new LinearLayoutManager(getContext()));
+        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        mBinding.recyclerviewFragmentTestQuestions.setLayoutManager(linearLayoutManager);
         mBinding.recyclerviewFragmentTestQuestions.setAdapter(mAdapter);
+        mBinding.recyclerviewFragmentTestQuestions.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                int visibleItemCount = linearLayoutManager.getChildCount();
+                int totalItemCount = linearLayoutManager.getItemCount();
+                int pastVisibleItems = linearLayoutManager.findFirstVisibleItemPosition();
+                if (pastVisibleItems + visibleItemCount >= totalItemCount) {
+                    mBinding.fabFragmentTest.show();
+                } else {
+                    mBinding.fabFragmentTest.hide();
+                }
+            }
+        });
     }
 
     private void initBindingView() {

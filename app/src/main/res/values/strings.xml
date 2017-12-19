@@ -23,4 +23,5 @@
     <string name="text_fragment_test_select_write_text">Please write your answer</string>
     <string name="text_fragment_test_submit_answer_button_label">Submit answer</string>
     <string name="text_fragment_test_answer_can_not_be_emprt">Answer can not be empty</string>
+    <string name="text_fragment_test_error_empty_answer">Please fill all answers</string>
 </resources>
