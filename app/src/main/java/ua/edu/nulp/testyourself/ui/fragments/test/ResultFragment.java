@@ -57,7 +57,7 @@ public class ResultFragment extends BaseFragment implements OnActionClickListene
     @Override
     protected void bindViewModel() {
         mBinding.setOnHomeButtonClick(this);
-        mBinding.setPercents(getArguments().getString(ARGUMENT_USER_RESULT + "%", ""));
+        mBinding.setPercents(getArguments().getString(ARGUMENT_USER_RESULT, ""));
 
         Result result = new Result();
         result.setGameResult(getArguments().getString(ARGUMENT_USER_RESULT, ""));
