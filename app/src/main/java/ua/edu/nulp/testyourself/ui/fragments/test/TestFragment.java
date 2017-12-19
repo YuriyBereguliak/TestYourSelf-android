@@ -32,6 +32,7 @@ import ua.edu.nulp.testyourself.model.TaskDetails;
 import ua.edu.nulp.testyourself.model.User;
 import ua.edu.nulp.testyourself.model.defs.QuestionType;
 import ua.edu.nulp.testyourself.model.handlers.OnActionClickListener;
+import ua.edu.nulp.testyourself.ui.activities.test.TestActivityNavigation;
 import ua.edu.nulp.testyourself.ui.adapters.TestAdapter;
 import ua.edu.nulp.testyourself.ui.viewmodels.TestViewModel;
 import ua.edu.nulp.testyourself.utils.L;
@@ -51,6 +52,9 @@ public class TestFragment extends BaseFragment implements OnCancelTestClickListe
 
     @Inject
     ThreadExecutor mThreadExecutor;
+
+    @Inject
+    TestActivityNavigation mTestActivityNavigation;
 
     private TestAdapter mAdapter;
     private TestViewModel mTestViewModel;
@@ -172,7 +176,10 @@ public class TestFragment extends BaseFragment implements OnCancelTestClickListe
             }
         }
 
-        showTastyToast("Correct answers + " + correctAnswers, TastyToast.INFO);
+        showTastyToast("Correct answers  " + correctAnswers, TastyToast.SUCCESS);
+
+        int percent = (100 * correctAnswers) / mAdapter.getTaskDetails().size();
+        mTestActivityNavigation.showResultFragment((User) getArguments().getParcelable(ARGUMENT_USER), String.valueOf(percent));
     }
     //endregion
 

@@ -12,4 +12,6 @@ public interface TestActivityNavigation {
     void showUserNameFragment();
 
     void showTestFragment(User user);
+
+    void showResultFragment(User user, String result);
 }
