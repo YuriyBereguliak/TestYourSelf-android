@@ -52,7 +52,9 @@ public class TestViewModel extends AndroidViewModel {
                     } else {
                         detail.mChoices.get(i).setCheck(false);
                     }
+                    detail.setUserGiveAnswer(true);
                 }
+                break;
             }
         }
     }
@@ -66,6 +68,20 @@ public class TestViewModel extends AndroidViewModel {
                         break;
                     }
                 }
+
+                int count = 0;
+                for (Choice choice : details.mChoices) {
+                    if (!choice.isCheck()) {
+                        count++;
+                    }
+                }
+
+                if (count == details.mChoices.size()) {
+                    details.setUserGiveAnswer(false);
+                } else {
+                    details.setUserGiveAnswer(true);
+                }
+
                 break;
             }
         }
@@ -75,6 +91,7 @@ public class TestViewModel extends AndroidViewModel {
         for (TaskDetails details : taskDetails) {
             if (taskId == details.mTask.getTaskId()) {
                 details.mChoices.get(0).setAnswer(answer);
+                details.setUserGiveAnswer(true);
                 break;
             }
         }

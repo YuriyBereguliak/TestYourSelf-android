@@ -124,8 +124,21 @@ public class TestFragment extends BaseFragment implements OnCancelTestClickListe
     //region OnActionClickListener
     @Override
     public void onActionClick() {
+        int giveAnswers = 0;
+        for (TaskDetails details : mAdapter.getTaskDetails()) {
+            if (details.isUserGiveAnswer()) {
+                giveAnswers++;
+            }
+        }
+
+        if (giveAnswers != mAdapter.getTaskDetails().size()) {
+            showTastyToast(getString(R.string.text_fragment_test_error_empty_answer), TastyToast.ERROR);
+            return;
+        }
+
+        // TODO: 19.12.2017 Refactor -> Move to ViewModel
+        // Start
         int correctAnswers = 0;
-        int it = 0;
         for (TaskDetails details : mAdapter.getTaskDetails()) {
             if (QuestionType.MULTI == details.mTask.getTaskType()) {
                 int trueAnswers = 0;
