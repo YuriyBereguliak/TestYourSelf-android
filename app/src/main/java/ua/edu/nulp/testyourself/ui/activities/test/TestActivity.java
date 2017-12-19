@@ -54,7 +54,7 @@ public class TestActivity extends BaseActivity implements TestActivityNavigation
 
     @Override
     public void showResultFragment(User user, String result) {
-        replaceFragment(getContentViewID(), ResultFragment.newInstance(user, result), true, true);
+        replaceFragment(getFrameLayoutId(), ResultFragment.newInstance(user, result), true, true);
     }
     //endregion
 

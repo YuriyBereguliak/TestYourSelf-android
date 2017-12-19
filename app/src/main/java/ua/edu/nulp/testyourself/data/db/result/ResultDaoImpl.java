@@ -3,6 +3,8 @@ package ua.edu.nulp.testyourself.data.db.result;
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
+import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.support.annotation.Nullable;
 
@@ -28,6 +30,10 @@ public interface ResultDaoImpl extends ResultDao {
     @Nullable
     @Query("SELECT * FROM Results WHERE user_name= :userName")
     LiveData<List<Result>> getResultsForUser(String userName);
+
+    @Override
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertResult(Result result);
 
     @Override
     @Nullable

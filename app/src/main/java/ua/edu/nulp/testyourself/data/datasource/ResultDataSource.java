@@ -20,6 +20,8 @@ public interface ResultDataSource {
 
     LiveData<List<BestResults>> getTopResults(int limit);
 
+    void insertData(Result result);
+
     void deleteResult(Result result);
 
     void deleteAllResults();

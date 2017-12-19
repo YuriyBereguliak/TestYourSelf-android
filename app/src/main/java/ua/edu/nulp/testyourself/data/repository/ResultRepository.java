@@ -27,6 +27,16 @@ public class ResultRepository implements ResultDataSource {
 
     //region ResultDataSource
     @Override
+    public void insertData(final Result result) {
+        mThreadExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                mResultDao.insertResult(result);
+            }
+        });
+    }
+
+    @Override
     public LiveData<List<Result>> getAllResults() {
         return mResultDao.getAllResults();
     }

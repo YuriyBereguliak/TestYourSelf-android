@@ -21,6 +21,8 @@ public interface ResultDao {
 
     LiveData<List<BestResults>> getTopResults(int limit);
 
+    void insertResult(Result result);
+
     void deleteResult(Result result);
 
     void deleteAllResults();

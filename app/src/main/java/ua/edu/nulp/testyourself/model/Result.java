@@ -11,16 +11,7 @@ import android.arch.persistence.room.PrimaryKey;
  * Created by Yuriy Bereguliak on 12/12/17.
  */
 
-@Entity(tableName = "Results",
-        foreignKeys = {
-                @ForeignKey(entity = User.class,
-                        parentColumns = "user_name",
-                        childColumns = "user_name",
-                        onDelete = ForeignKey.CASCADE)
-        },
-        indices = {
-                @Index(value = "user_name")
-        })
+@Entity(tableName = "Results")
 public class Result {
 
     @PrimaryKey(autoGenerate = true)
