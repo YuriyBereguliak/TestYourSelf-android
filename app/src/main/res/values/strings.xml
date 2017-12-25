@@ -27,4 +27,5 @@
     <string name="text_fragment_result_go_to_home">Go home</string>
     <string name="user_name">USER NAME</string>
     <string name="result">RESULT</string>
+    <string name="swipe_for_select_existed_user">Swipe for select existed user</string>
 </resources>

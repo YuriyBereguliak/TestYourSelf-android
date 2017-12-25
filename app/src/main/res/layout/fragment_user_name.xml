@@ -60,6 +60,19 @@
                 style="@style/styleActionButton"
                 android:text="@string/text_fragment_user_name_register_user_and_start_game"
                 android:textAlignment="center"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:text="@string/swipe_for_select_existed_user"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"/>
+            </RelativeLayout>
         </LinearLayout>
     </com.daimajia.swipe.SwipeLayout>
 
