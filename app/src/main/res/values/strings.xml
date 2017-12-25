@@ -24,5 +24,7 @@
     <string name="text_fragment_test_submit_answer_button_label">Submit answer</string>
     <string name="text_fragment_test_answer_can_not_be_emprt">Answer can not be empty</string>
     <string name="text_fragment_test_error_empty_answer">Please fill all answers</string>
-    <string name="text_fragment_result_go_to_home">Go to home</string>
+    <string name="text_fragment_result_go_to_home">Go home</string>
+    <string name="user_name">USER NAME</string>
+    <string name="result">RESULT</string>
 </resources>
