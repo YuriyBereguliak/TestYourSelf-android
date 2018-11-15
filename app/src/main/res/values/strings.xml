@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">TestYourSelf</string>
+    <string name="empty"/>
+
+    <!-- HomeFragment -->
+    <string name="text_fragment_home_start_text">Start test</string>
+
+    <!-- UserNameFragment -->
+    <string name="text_fragment_user_name_account_created">Account created</string>
+    <string name="text_fragment_user_name_user_already_exist">This user already exist</string>
+    <string name="text_fragment_user_name_register_user_and_start_game">Register user and start game</string>
+    <string name="text_fragment_user_name_empty_toast">Please fill user name</string>
+    <string name="text_fragment_user_name_empty_text_input_layout">Can not be empty</string>
+
+    <!-- TestFragment -->
+    <string name="text_fragment_test_loading_tests">Loading tests</string>
+    <string name="text_fragment_test_attention_title">Attention</string>
+    <string name="test_fragment_test_dialog_message">Do you want finish your test?</string>
+    <string name="test_fragment_test_positive_button_label">Yes</string>
+    <string name="text_fragment_test_negative_button_label">No</string>
+    <string name="text_fragment_test_select_one_choice">Please select one answer</string>
+    <string name="text_fragment_test_select_multi_choices_text">Please select few answers</string>
+    <string name="text_fragment_test_select_write_text">Please write your answer</string>
+    <string name="text_fragment_test_submit_answer_button_label">Submit answer</string>
+    <string name="text_fragment_test_answer_can_not_be_emprt">Answer can not be empty</string>
+    <string name="text_fragment_test_error_empty_answer">Please fill all answers</string>
+    <string name="text_fragment_result_go_to_home">Go home</string>
+    <string name="user_name">USER NAME</string>
+    <string name="result">RESULT</string>
+    <string name="swipe_for_select_existed_user">Swipe for select existed user</string>
 </resources>

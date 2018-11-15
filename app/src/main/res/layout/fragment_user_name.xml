@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="userNameViewModel"
+            type="ua.edu.nulp.testyourself.ui.viewmodels.UserNameViewModel"/>
+    </data>
+
+    <com.daimajia.swipe.SwipeLayout
+        android:id="@+id/swipelayout_fragment_user_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_gradient"
+        app:drag_edge="bottom">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:gravity="center">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerview_fragment_user_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="LinearLayoutManager"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_all_default">
+
+            <ImageView
+                android:id="@+id/circleimageview_fragment_user_name_avatar"
+                android:layout_width="@dimen/size_user_avatar"
+                android:layout_height="@dimen/size_user_avatar"
+                android:contentDescription="@string/empty"
+                android:src="@drawable/ic_user"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textinputlayout_fragment_user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_all_big">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/textinputedittext_fragment_user_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textview_fragment_user_name_start_game_and_register"
+                style="@style/styleActionButton"
+                android:text="@string/text_fragment_user_name_register_user_and_start_game"
+                android:textAlignment="center"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:text="@string/swipe_for_select_existed_user"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </com.daimajia.swipe.SwipeLayout>
+
+</layout>

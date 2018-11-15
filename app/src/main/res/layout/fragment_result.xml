@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="java.lang.String"/>
+
+        <variable
+            name="percents"
+            type="String"/>
+
+        <variable
+            name="onHomeButtonClick"
+            type="ua.edu.nulp.testyourself.model.handlers.OnActionClickListener"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_gradient">
+
+        <LinearLayout
+            android:id="@+id/linearlayout_fragment_result_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/textview_fragment_result_go_to_home"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:id="@+id/imageview_fragment_result_people_icon"
+                android:layout_width="@dimen/size_app_logo"
+                android:layout_height="@dimen/size_app_logo"
+                android:contentDescription="@string/empty"
+                android:src="@drawable/ic_done_all"/>
+
+            <TextView
+                android:id="@+id/textview_fragment_result_percent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{percents}"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/textsize_all_display_1"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textview_fragment_result_go_to_home"
+            style="@style/styleActionButton"
+            android:layout_alignParentBottom="true"
+            android:onClick="@{()->onHomeButtonClick.onActionClick()}"
+            android:text="@string/text_fragment_result_go_to_home"
+            android:textAlignment="center"/>
+    </RelativeLayout>
+</layout>

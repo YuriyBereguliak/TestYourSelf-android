@@ -19,6 +19,7 @@ public class App extends Application {
         super.onCreate();
 
         initDagger();
+        initDB();
     }
     //endregion
 
@@ -32,6 +33,10 @@ public class App extends Application {
     private void initDagger() {
         mAppComponent = AppComponent.Initializer.init(this);
         mAppComponent.inject(this);
+    }
+
+    private void initDB() {
+        mAppComponent.tasksDataSource().initDatabase();
     }
     //endregion
 }

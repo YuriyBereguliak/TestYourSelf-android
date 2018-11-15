@@ -9,6 +9,9 @@ import butterknife.ButterKnife;
 import ua.edu.nulp.testyourself.R;
 import ua.edu.nulp.testyourself.core.BaseActivity;
 import ua.edu.nulp.testyourself.di.activity.ActivityComponent;
+import ua.edu.nulp.testyourself.ui.activities.results.AllResultsActivity;
+import ua.edu.nulp.testyourself.ui.activities.settings.SettingsActivity;
+import ua.edu.nulp.testyourself.ui.activities.test.TestActivity;
 import ua.edu.nulp.testyourself.ui.fragments.home.HomeFragment;
 
 /**
@@ -52,17 +55,17 @@ public class HomeActivity extends BaseActivity implements HomeActivityNavigation
 
     @Override
     public void showSettingsActivity() {
-
+        startActivity(SettingsActivity.getStartIntent(this));
     }
 
     @Override
     public void showAllResultsActivity() {
-
+        startActivity(AllResultsActivity.getStartIntent(this));
     }
 
     @Override
     public void showTestActivity() {
-
+        startActivity(TestActivity.getStartIntent(this));
     }
     //endregion
 }

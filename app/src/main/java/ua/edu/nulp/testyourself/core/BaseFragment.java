@@ -14,7 +14,8 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
+import com.sdsmdg.tastytoast.TastyToast;
 
 import ua.edu.nulp.testyourself.App;
 import ua.edu.nulp.testyourself.R;
@@ -125,6 +126,9 @@ public abstract class BaseFragment extends LifecycleFragment implements Handler.
     }
     //endregion
 
+    public boolean onBackPressed() {
+        return false;
+    }
 
     public void showLoadingDialog(String messageValue) {
         Message message = new Message();
@@ -144,6 +148,13 @@ public abstract class BaseFragment extends LifecycleFragment implements Handler.
         Message message = new Message();
         message.what = MSG_HIDE_LOADING_DIALOG;
         mUIHandler.sendMessage(message);
+    }
+
+    public void showTastyToast(String message, int type) {
+        TastyToast.makeText(getContext(),
+                message,
+                TastyToast.LENGTH_SHORT,
+                type).show();
     }
 
     //region ErrorUiHandler
@@ -166,16 +177,6 @@ public abstract class BaseFragment extends LifecycleFragment implements Handler.
                             .show();
                 }
             });
-        } else {
-            L.e("Activity is detached.");
-        }
-    }
-    //endregion
-
-    //region InfoUiHandler
-    public void showToastMessage(final String message) {
-        if (getActivity() != null) {
-            Toast.makeText(BaseFragment.this.getActivity(), message, Toast.LENGTH_SHORT).show();
         } else {
             L.e("Activity is detached.");
         }

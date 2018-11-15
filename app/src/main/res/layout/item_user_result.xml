@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="userName"
+            type="String"/>
+
+        <variable
+            name="userResult"
+            type="String"/>
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginBottom="@dimen/margin_all_default"
+                  android:layout_marginLeft="@dimen/margin_all_default"
+                  android:layout_marginRight="@dimen/margin_all_default"
+                  android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/user_name"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/textsize_all_body"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{userName}"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/textsize_all_title"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_all_medium"
+            android:text="@string/result"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/textsize_all_body"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{userResult}"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/textsize_all_title"
+            android:textStyle="bold"/>
+
+        <View
+            android:layout_marginTop="@dimen/margin_all_default"
+            android:background="@android:color/white"
+            style="@style/styleDivider"/>
+    </LinearLayout>
+</layout>

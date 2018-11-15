@@ -10,6 +10,8 @@
     <dimen name="margin_all_medium">12dp</dimen>
     <dimen name="margin_all_default">16dp</dimen>
     <dimen name="margin_all_big">32dp</dimen>
+    <dimen name="margin_all_bigger">48dp</dimen>
+    <dimen name="margin_all_biggest">72dp</dimen>
 
     <!--Default text sizes, per the Android Design guidelines.
     See {@link https://material.io/guidelines/style/typography.html#typography-styles}-->
@@ -22,5 +24,9 @@
     <dimen name="textsize_all_display_2">45dp</dimen>
     <dimen name="textsize_all_display_3">56dp</dimen>
     <dimen name="textsize_all_display_4">112dp</dimen>
+    <dimen name="size_app_logo">110dp</dimen>
+    <dimen name="size_user_avatar">170dp</dimen>
 
+    <dimen name="height_divider">2dp</dimen>
+    <dimen name="size_user_avatar_image_view">48dp</dimen>
 </resources>

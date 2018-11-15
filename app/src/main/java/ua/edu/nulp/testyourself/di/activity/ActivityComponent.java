@@ -1,11 +1,20 @@
 package ua.edu.nulp.testyourself.di.activity;
 
+import android.support.annotation.NonNull;
+
 import dagger.Component;
 import ua.edu.nulp.testyourself.core.BaseActivity;
 import ua.edu.nulp.testyourself.di.application.AppComponent;
+import ua.edu.nulp.testyourself.di.database.DatabaseModule;
 import ua.edu.nulp.testyourself.ui.activities.home.HomeActivity;
+import ua.edu.nulp.testyourself.ui.activities.results.AllResultsActivity;
 import ua.edu.nulp.testyourself.ui.activities.splash.SplashActivity;
+import ua.edu.nulp.testyourself.ui.activities.test.TestActivity;
 import ua.edu.nulp.testyourself.ui.fragments.home.HomeFragment;
+import ua.edu.nulp.testyourself.ui.fragments.results.AllResultsFragment;
+import ua.edu.nulp.testyourself.ui.fragments.test.ResultFragment;
+import ua.edu.nulp.testyourself.ui.fragments.test.TestFragment;
+import ua.edu.nulp.testyourself.ui.fragments.test.UserNameFragment;
 
 /**
  * TestYourSelf project
@@ -22,6 +31,18 @@ public interface ActivityComponent {
 
     void inject(HomeFragment homeFragment);
 
+    void inject(AllResultsActivity allResultsActivity);
+
+    void inject(AllResultsFragment allResultsFragment);
+
+    void inject(TestActivity testActivity);
+
+    void inject(UserNameFragment userNameFragment);
+
+    void inject(TestFragment testFragment);
+
+    void inject(ResultFragment resultFragment);
+
     //region Builder
     final class Initializer {
 
@@ -29,6 +50,7 @@ public interface ActivityComponent {
 
         }
 
+        @NonNull
         public static ActivityComponent init(AppComponent appComponent, BaseActivity activity) {
             return DaggerActivityComponent.builder()
                     .appComponent(appComponent)
